@@ -43,7 +43,7 @@ const SiteMenu = ({ className, variant }: SiteMenuProps) => {
 
   return (
     <ul
-      className={cn("nav max-xs:hidden flex gap-16 font-medium text-lg flex-1 justify-center", className, {
+      className={cn("nav max-xs:hidden flex gap-16 font-medium max-xs:text-md text-lg flex-1 justify-center", className, {
         "max-xs:block flex-col": variant === "mobile",
       })}
     >
