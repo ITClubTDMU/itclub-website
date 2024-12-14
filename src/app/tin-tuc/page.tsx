@@ -42,9 +42,12 @@ const News = () => {
   }, [data_len]);
 
   return (
-    <div className="] mx-auto max-w-[1200px] pb-40 px-extraPageHorizontal mt-section">
+    <div className="mx-auto mt-section max-w-[1200px] px-extraPageHorizontal pb-40">
       <SectionHeading text="Tin tức" />
-      <div id="priority-news" className="grid grid-cols-2 gap-node max-xs:grid-cols-1">
+      <div
+        id="priority-news"
+        className="grid grid-cols-2 gap-node max-xs:grid-cols-1"
+      >
         <CardNews size="lg" />
         <div className="not-important-news grid grid-cols-2 gap-node max-xs:hidden">
           <CardNews size="md" />

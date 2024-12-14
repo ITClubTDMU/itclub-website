@@ -91,9 +91,8 @@ body {
   }
 }
 
-
 @layer components {
   .section_home {
-    @apply h-screen max-xs:h-auto mb-section px-extraPageHorizontal;
+    @apply mb-section h-screen px-extraPageHorizontal max-xs:h-auto;
   }
 }
