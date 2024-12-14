@@ -3,7 +3,6 @@
 import { registerAuthSchema } from "@/schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 import { TAuthRegister } from "@/types/auth";
 import { useZodErrors } from "@/hooks/useZodError";
