@@ -39,7 +39,7 @@ body {
     --radius: 0.5rem;
     --affix-header: 5rem;
     --space-node: 2rem;
-    --space-section: 5rem;
+    --space-section: 15rem;
     --extra-pageHorizontal: 1rem;
   }
   .dark {
@@ -93,6 +93,6 @@ body {
 
 @layer components {
   .section_home {
-    @apply mb-section h-screen px-extraPageHorizontal max-xs:h-auto;
+    @apply mb-section max-h-screen px-extraPageHorizontal max-xs:h-auto;
   }
 }
