@@ -17,13 +17,14 @@ const HomeLayout = ({
   banner,
 }: HomeLayoutProps) => {
   return (
-    <div>
+    <div className="pb-20">
+      {children}
       {banner}
       {about}
       {service}
       {member}
       {news}
-      {children}
+      
     </div>
   );
 };

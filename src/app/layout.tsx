@@ -3,6 +3,8 @@ import { Roboto } from "next/font/google";
 
 import "./globals.css";
 
+import { AuthProvider } from "@/contexts/AuthProvider";
+
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 
@@ -28,9 +30,11 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} flex flex-col bg-background text-[1.6rem] transition-colors duration-300 ease-in-out`}
       >
-        <Header />
-        <div className="group flex-1 pb-10">{children}</div>
-        <Footer />
+        <AuthProvider>
+          <Header />
+          <div className="group flex-1 pb-10">{children}</div>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
