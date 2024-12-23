@@ -1,8 +1,11 @@
 "use client";
 
 import React from "react";
+import { redirect } from "next/navigation";
 import { loginAuthSchema } from "@/schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 
 import { TAuthLogin } from "@/types/auth";
@@ -10,6 +13,8 @@ import { useZodErrors } from "@/hooks/useZodError";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { FormInput } from "@/components/form/form-input";
+
+import Providers from "./providers";
 
 const LoginPage = () => {
   useZodErrors();
@@ -22,8 +27,20 @@ const LoginPage = () => {
     },
   });
 
-  function onSubmit(values: TAuthLogin) {
+  const mutation = useMutation({
+    mutationFn: async (payload: TAuthLogin) =>
+      signIn("credentials", {
+        ...payload,
+        redirect: false,
+      }),
+    onSuccess: () => {
+      redirect("/");
+    },
+  });
+
+  async function onSubmit(values: TAuthLogin) {
     console.log(values);
+    mutation.mutate(values);
   }
 
   return (
@@ -47,15 +64,14 @@ const LoginPage = () => {
         <div className="text-right font-medium text-primary">
           <Button variant={"link"}>Quên mật khẩu?</Button>
         </div>
-        <Button type="submit" className="h-16 w-full text-lg shadow-lg">
+        <Button
+          type="submit"
+          className="h-16 w-full text-lg shadow-lg"
+          disabled={mutation.isPending}
+        >
           Đăng nhập
         </Button>
-        <div className="flex h-16 flex-col items-center gap-node font-medium">
-          <span>hoặc</span>
-          <Button variant={"outline"} className="h-full w-full text-lg">
-            Đăng nhập với google
-          </Button>
-        </div>
+        <Providers />
       </form>
     </Form>
   );
