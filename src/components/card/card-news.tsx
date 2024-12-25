@@ -22,7 +22,7 @@ const CardNews = ({ size = "md", className, ...rest }: TCardNews) => {
         alt="thumbnail news"
         fill
         ratio={16 / 9}
-        className="rounded-2xl"
+        className="rounded-tl-2xl rounded-tr-2xl"
         container="max-h-max"
       />
       <div className="content px-5 pb-10">

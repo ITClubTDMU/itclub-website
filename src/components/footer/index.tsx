@@ -5,15 +5,14 @@ import AppImage from "../ui/app-image";
 
 const Footer = () => {
   return (
-    <div className="mt-auto flex w-full items-center justify-center gap-40 px-[40px] py-20 shadow-inner max-xs:flex-col max-xs:gap-20">
+    <div className="mt-auto flex w-full items-center justify-center gap-40 px-[40px] py-20 shadow-inner max-xs:flex-col max-xs:gap-20 max-xs:px-[10px]">
       <div className="organization flex items-center">
         <AppImage
           ratio={1}
           src={"/logo.png"}
           alt="itclub logo"
-          container="w-20 h-20"
+          container="w-40 h-40"
         />
-        <div className="text-3xl font-bold text-primary">IT Club TDMU</div>
       </div>
 
       <div className="flex flex-col">
@@ -35,8 +34,8 @@ type TInfoProps = {
 };
 const Info = ({ label, text }: TInfoProps) => {
   return (
-    <div className="flex gap-node max-xs:gap-3">
-      <span className="w-[100px] max-xs:w-[80px]">{label}</span>
+    <div className="flex gap-node text-wrap max-xs:gap-3">
+      <span className="mr-auto w-[80px]">{label}</span>
       <span className="flex-1 text-wrap">{text}</span>
     </div>
   );

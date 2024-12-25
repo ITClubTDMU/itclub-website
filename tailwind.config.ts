@@ -8,11 +8,14 @@ export default {
   ],
   theme: {
     screens: {
-      xs: "500px",
-      sm: "1200px",
-      md: "1400px",
-      lg: "1400px",
-      "max-xs": { max: "500px" },
+      xs: "500.98px",
+      sm: "900.98px",
+      md: "1200.98",
+      lg: "1400.98px",
+      "max-xs": { max: "500.981px" },
+      "max-sm": { max: "900.981px" },
+      "max-md": { max: "1200.981px" },
+      "max-lg": { max: "1400.981px" },
     },
     extend: {
       colors: {
@@ -127,7 +130,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        marquee_member: "marquee_member 20s linear infinite",
+        marquee_member: "marquee_member 7s linear infinite",
         fadeIn: "fadeIn 1s ease-in-out",
         jumUpDown: "jump-up-down 1s ease-in-out infinite",
       },
