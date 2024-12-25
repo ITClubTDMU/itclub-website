@@ -13,7 +13,7 @@ const ServicePage = () => {
   return (
     <div className="section_home ] flex flex-col justify-center">
       <SectionHeading text="giá trị mang lại" />
-      <div className="max-xs:grid-cols-1 grid grid-cols-2 gap-node">
+      <div className="grid grid-cols-2 gap-node max-xs:grid-cols-1">
         <Accordion
           type="single"
           collapsible

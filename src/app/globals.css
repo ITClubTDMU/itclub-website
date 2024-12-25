@@ -38,9 +38,9 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --affix-header: 5rem;
-    --space-node: 2rem;
+    --space-node: 2.4rem;
     --space-section: 15rem;
-    --extra-pageHorizontal: 1rem;
+    --extra-pageHorizontal: 2.4rem;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -93,6 +93,7 @@ body {
 
 @layer components {
   .section_home {
-    @apply mb-section max-h-screen px-extraPageHorizontal max-xs:h-auto;
+    @apply mb-section h-auto px-extraPageHorizontal mx-auto;
+    max-width: calc(120rem + var(--extra-pageHorizontal) * 2);
   }
 }
