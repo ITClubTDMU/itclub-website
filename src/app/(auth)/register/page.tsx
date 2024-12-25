@@ -1,7 +1,10 @@
 "use client";
 
+import { redirect } from "next/navigation";
 import { registerAuthSchema } from "@/schemas/auth";
+import { AuthService } from "@/services/authService";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
 import { TAuthRegister } from "@/types/auth";
@@ -16,7 +19,7 @@ export default function RegisterForm() {
   const form = useForm<TAuthRegister>({
     resolver: zodResolver(registerAuthSchema),
     defaultValues: {
-      fullname: "",
+      fullName: "",
       email: "",
       username: "",
       password: "",
@@ -24,8 +27,15 @@ export default function RegisterForm() {
     },
   });
 
+  const mutation = useMutation({
+    mutationFn: (payload: TAuthRegister) => AuthService.register(payload),
+    onSuccess() {
+      redirect("/login");
+    },
+  });
+
   const onSubmit = async (data: TAuthRegister) => {
-    console.log(data);
+    mutation.mutate(data);
   };
 
   return (
@@ -38,13 +48,13 @@ export default function RegisterForm() {
 
         <FormInput
           control={form.control}
-          name="fullname"
+          name="fullName"
           formLabelProps={{ title: "Họ và tên" }}
         />
         <FormInput
           control={form.control}
           name="username"
-          formLabelProps={{ title: "Tên hiển thị" }}
+          formLabelProps={{ title: "Tên tài khoản" }}
         />
         <FormInput
           control={form.control}

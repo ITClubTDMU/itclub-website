@@ -1,25 +1,23 @@
 import * as z from "zod";
 
 const baseAuthSchema = z.object({
-  username: z.string().min(1).max(20) || z.string().email(),
+  username: z.string().min(1).max(20),
   password: z.string().min(5).max(20),
 });
 
 const baseRegisterAuthSchema = baseAuthSchema.extend({
-  fullname: z.string().min(1).max(50),
+  fullName: z.string().min(1).max(50),
   confirmPassword: z.string().min(1).max(20),
   email: z.string().email(),
 });
 
-export const loginAuthSchema = baseAuthSchema.extend({
-  rememberMe: z.boolean().optional(),
-});
+export const loginAuthSchema = baseAuthSchema.extend({});
 
 export const registerAuthSchema = baseRegisterAuthSchema.refine(
   (data) => data.password === data.confirmPassword,
   {
     message: "Mật khẩu không khớp",
-    path: ["confirmPassword", "password"],
+    path: ["confirmPassword"],
   }
 );
 
