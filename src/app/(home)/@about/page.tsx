@@ -1,20 +1,16 @@
 import React from "react";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import AppImage from "@/components/ui/app-image";
 import SectionHeading from "@/components/section/heading";
-import SectionTitle from "@/components/section/title";
 
 const AboutPage = () => {
   return (
-    <div className="section_home ] flex flex-col justify-center">
+    <div
+      className="section_home flex h-max flex-col justify-center"
+      id="about-us"
+    >
       <SectionHeading text="Về câu lạc bộ IT" />
-      <div className="max-xs:grid-cols-none grid grid-cols-2 gap-node">
+      <div className="grid grid-cols-2 gap-node max-xs:grid-cols-none">
         <AppImage
           src={"/icpc.jpg"}
           alt="aboutus"

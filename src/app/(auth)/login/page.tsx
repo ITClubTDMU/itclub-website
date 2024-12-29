@@ -39,7 +39,7 @@ const LoginPage = () => {
   });
 
   async function onSubmit(values: TAuthLogin) {
-    console.log(values);
+    // console.log(values);
     mutation.mutate(values);
   }
 

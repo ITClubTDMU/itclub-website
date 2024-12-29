@@ -4,20 +4,21 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import {
-  Sheet,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 
-import { Button } from "../ui/button";
+
+import { cn } from "@/lib/utils";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+
+
+
+
 
 const navItems = [
   { name: "Trang chủ", link: "/" },
-  { name: "Hoạt động/Sự kiện", link: "/hoat-dong" },
-  { name: "Tin tức", link: "/tin-tuc" },
+  // { name: "Hoạt động/Sự kiện", link: "/hoat-dong" },
+  { name: "Về chúng tôi", link: "#about-us" },
+  { name: "Giá trị", link: "#gia-tri-mang-lai" },
+  { name: "Tin tức", link: "#tin-tuc" },
   { name: "Kết nối", link: "/ket-noi" },
 ];
 
@@ -30,7 +31,10 @@ const NavMenu = () => {
         <SheetTrigger>
           <Menu className="hidden h-12 w-12 text-blue-500 max-xs:block" />
         </SheetTrigger>
-        <SheetContent className="px-0">
+        <SheetContent
+          className="max-w-[200px] px-0 data-[state=open]:xs:hidden"
+          sheetOverlayClassname="data-[state=open]:xs:hidden"
+        >
           <SheetTitle></SheetTitle>
           <SiteMenu className="flex flex-col max-xs:block" variant="mobile" />
         </SheetContent>
@@ -50,7 +54,7 @@ const SiteMenu = ({ className, variant }: SiteMenuProps) => {
   return (
     <ul
       className={cn(
-        "nav flex flex-1 justify-center gap-16 text-lg font-medium max-xs:hidden max-xs:text-md",
+        "nav flex flex-1 justify-end gap-16 text-lg font-medium max-xs:hidden max-xs:text-md",
         className,
         {
           "flex-col max-xs:block": variant === "mobile",
@@ -61,7 +65,7 @@ const SiteMenu = ({ className, variant }: SiteMenuProps) => {
         <li
           key={item.name}
           className={cn(
-            "nav-item cursor-pointer font-semibold text-secondary",
+            "nav-item cursor-pointer font-semibold transition-all duration-300 ease-in-out",
             {
               "font-semibold text-blue-500 drop-shadow-lg":
                 active === item.name,
@@ -75,9 +79,9 @@ const SiteMenu = ({ className, variant }: SiteMenuProps) => {
           </Link>
         </li>
       ))}
-      <Button className="ml-4 mt-node hidden max-xs:block">
+      {/* <Button className="ml-4 mt-node hidden max-xs:block">
         Đăng nhập/Đăng ký
-      </Button>
+      </Button> */}
     </ul>
   );
 };

@@ -10,7 +10,7 @@ export default {
     screens: {
       xs: "500.98px",
       sm: "900.98px",
-      md: "1200.98",
+      md: "1200.98px",
       lg: "1400.98px",
       "max-xs": { max: "500.981px" },
       "max-sm": { max: "900.981px" },
