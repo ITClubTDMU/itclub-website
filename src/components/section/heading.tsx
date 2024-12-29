@@ -11,7 +11,7 @@ const SectionHeading = ({ text, className }: TSectionHeading) => {
   return (
     <h1
       className={cn(
-        "max-xs:text-2xl mb-node text-center text-[3.5rem] font-bold uppercase text-primary",
+        "max-xs:text-2xl mb-node text-center text-[3.5rem] font-bold uppercase text-primary mt-[80px]",
         className
       )}
     >

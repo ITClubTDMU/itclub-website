@@ -43,7 +43,7 @@ const request = async <TData>(
 
   if (options?.isAuthApi) {
     const session = await getSession();
-    console.log("my session", session);
+    // console.log("my session", session);
     baseHeaders["Authorization"] = `Bearer ${session?.user.token ?? ""}`;
   }
 
@@ -77,7 +77,7 @@ const request = async <TData>(
     payload: payload.data,
   };
 
-  console.log(payload);
+  // console.log(payload);
   if (!res.ok) {
     return Promise.reject(new HttpError(data));
   }

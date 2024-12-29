@@ -11,7 +11,7 @@ import SectionHeading from "@/components/section/heading";
 
 const ServicePage = () => {
   return (
-    <div className="section_home ] flex flex-col justify-center">
+    <div className="section_home flex flex-col justify-center" id="gia-tri-mang-lai">
       <SectionHeading text="giá trị mang lại" />
       <div className="grid grid-cols-2 gap-node max-xs:grid-cols-1">
         <Accordion

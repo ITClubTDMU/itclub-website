@@ -1,7 +1,7 @@
 import { z, ZodIssueCode } from "zod";
 
-export const zodErrorMap: z.ZodErrorMap = (issue, ctx) => {
-  console.log(issue, ctx);
+export const zodErrorMap: z.ZodErrorMap = (issue) => { // ctx is second params
+  // console.log(issue, ctx);
   const path = issue.path.join(">");
 
   switch (issue.code) {

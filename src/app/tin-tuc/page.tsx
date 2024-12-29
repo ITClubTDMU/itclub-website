@@ -13,7 +13,7 @@ const News = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log(entry);
+          // console.log(entry);
           entry.target.classList.add("animate-fadeIn");
         }
       });
@@ -29,7 +29,7 @@ const News = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log(entry.target);
+          // console.log(entry.target);
           setDataLen(data_len + 8);
         }
       });
@@ -42,14 +42,11 @@ const News = () => {
   }, [data_len]);
 
   return (
-    <div className="mx-auto mt-section max-w-[1200px] px-extraPageHorizontal pb-40">
+    <div className="mx-auto mt-3 max-w-[1200px] px-extraPageHorizontal pb-40">
       <SectionHeading text="Tin tức" />
-      <div
-        id="priority-news"
-        className="grid grid-cols-2 gap-node max-xs:grid-cols-1"
-      >
-        <CardNews size="lg" />
-        <div className="not-important-news grid grid-cols-2 gap-node max-xs:hidden">
+      <div className="grid grid-cols-2 gap-node max-xs:grid-cols-1 max-md:grid-cols-1">
+        <CardNews size="lg" id="priority-news" />
+        <div className="not-important-news grid grid-cols-2 gap-node max-sm:grid-cols-1">
           <CardNews size="md" />
           <CardNews size="md" />
           <CardNews size="md" />
@@ -57,7 +54,7 @@ const News = () => {
         </div>
       </div>
 
-      <div className="list mt-node grid grid-cols-4 gap-node max-xs:grid-cols-2">
+      <div className="list mt-node grid gap-node xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 max-xs:grid-cols-1">
         {Array.from({ length: data_len }).map((_, index) => (
           <CardNews
             key={index + 1}
