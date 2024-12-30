@@ -16,10 +16,11 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 const navItems = [
   { name: "Trang chủ", link: "/" },
   // { name: "Hoạt động/Sự kiện", link: "/hoat-dong" },
-  { name: "Về chúng tôi", link: "#about-us" },
-  { name: "Giá trị", link: "#gia-tri-mang-lai" },
-  { name: "Tin tức", link: "#tin-tuc" },
-  { name: "Kết nối", link: "/ket-noi" },
+  // { name: "Về chúng tôi", link: "#about-us" },
+  // { name: "Giá trị", link: "#gia-tri-mang-lai" },
+  { name: "Thế hệ", link: "/the-he" },
+  { name: "Tin tức", link: "/tin-tuc" },
+  { name: "Kết nối", link: "/comingsoon" },
 ];
 
 const NavMenu = () => {

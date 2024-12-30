@@ -1,10 +1,15 @@
-import { Button } from '@/components/ui/button'
-import React from 'react'
+import React from "react";
+import Link from "next/link";
 
 const ViewMore = () => {
   return (
-    <Button className="rounded-full text-md uppercase" variant={"outline"}>Xem thêm</Button>
-  )
-}
+    <Link
+      href={"/tin-tuc"}
+      className="ml-auto mt-node w-max flex justify-end text-md font-medium uppercase text-primary hover:underline hover:underline-offset-2"
+    >
+      Xem thêm
+    </Link>
+  );
+};
 
-export default ViewMore
+export default ViewMore;

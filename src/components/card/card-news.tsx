@@ -3,12 +3,16 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 import AppImage from "../ui/app-image";
+import { News } from "@/types/news";
+import formatDate from "@/utils/formatDate";
+import Link from "next/link";
 
 type TCardNews = {
   size?: "md" | "lg";
+  data?: News;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const CardNews = ({ size = "md", className, ...rest }: TCardNews) => {
+const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
   return (
     <div
       className={cn(
@@ -18,7 +22,7 @@ const CardNews = ({ size = "md", className, ...rest }: TCardNews) => {
       {...rest}
     >
       <AppImage
-        src={"/icpc.jpg"}
+        src={data?.thumbnail ?? "/images/placeholder.jpg"}
         alt="thumbnail news"
         fill
         ratio={16 / 9}
@@ -27,10 +31,10 @@ const CardNews = ({ size = "md", className, ...rest }: TCardNews) => {
       />
       <div className="content px-5 pb-10">
         <div className="flex flex-col gap-2 font-medium">
-          <span className="text-secondary">24 Th01 2024</span>
-          <span className="line-clamp-2 cursor-pointer uppercase hover:underline">
-            Muôn vàng câu chúc chào đón xuân sang
-          </span>
+          <span className="text-secondary">{formatDate(data?.createdAt)}</span>
+          <Link href={`/tin-tuc/${data?._id}`} className="line-clamp-2 cursor-pointer uppercase hover:underline">
+            {data?.title} {data?._id}
+          </Link>
         </div>
         <p
           className={cn("short-description", {
@@ -38,14 +42,14 @@ const CardNews = ({ size = "md", className, ...rest }: TCardNews) => {
             "line-clamp-6": size === "lg",
           })}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem odio
-          tempore ratione dolorum a incidunt nisi et. Autem excepturi, dolor,
-          nobis maiores quam officia unde sunt doloribus quasi blanditiis
-          laboriosam.
+          {data?.shortDescription}
         </p>
       </div>
     </div>
   );
 };
+
+
+
 
 export default CardNews;

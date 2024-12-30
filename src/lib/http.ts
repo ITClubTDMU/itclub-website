@@ -20,10 +20,6 @@ class HttpError extends Error {
   }
 }
 
-type TSingleRes<TData> = {
-  success: true;
-} & Record<string, TData>;
-
 type TPayload<TData> = {
   statusCode: number;
   message: string;
@@ -70,7 +66,7 @@ const request = async <TData>(
   });
 
   const payload: TPayload<TData> = await res.json();
-
+  
   const data = {
     status: res.status,
     message: payload.message,
@@ -87,13 +83,19 @@ const request = async <TData>(
 
 const http = {
   get<TData>(url: string, options?: Omit<CustomOptions, "body"> | undefined) {
-    return request<TSingleRes<TData>>("GET", url, options);
+    return request<TData>("GET", url, options);
   },
-  getList<TData>(
+  getList<TData, TSearchParams = undefined>(
     url: string,
+    searchParams?: TSearchParams,
     options?: Omit<CustomOptions, "body"> | undefined
   ) {
-    return request<TSingleRes<TData[]>>("GET", url, options);
+    if (searchParams) url += `?${convertObjectToSearchParams(searchParams)}`;
+
+    return request<TData[]>("GET", url, {
+      ...options,
+      isAuthApi: true,
+    });
   },
   post<TData>(url: string, body: any, options?: CustomOptions | undefined) {
     return request<TData>("POST", url, { ...options, body });
@@ -101,9 +103,48 @@ const http = {
   put<TData>(url: string, body: any, options?: CustomOptions | undefined) {
     return request<TData>("PUT", url, { ...options, body });
   },
-  delete<TData>(url: string, body: any, options?: CustomOptions | undefined) {
-    return request<TData>("DELETE", url, { ...options, body });
+  delete<TData>(url: string, options?: CustomOptions | undefined) {
+    return request<TData>("DELETE", url, { ...options });
   },
 };
 
-export { http };
+const httpAuth = {
+  get<TData>(url: string, options?: Omit<CustomOptions, "body"> | undefined) {
+    return request<TData>("GET", url, {
+      ...options,
+      isAuthApi: true,
+    });
+  },
+  getList<TData, TSearchParams = undefined>(
+    url: string,
+    searchParams?: TSearchParams,
+    options?: Omit<CustomOptions, "body"> | undefined
+  ) {
+    if (searchParams) url += `?${convertObjectToSearchParams(searchParams)}`;
+
+    return request<TData[]>("GET", url, {
+      ...options,
+      isAuthApi: true,
+    });
+  },
+  post<TData>(url: string, body: any, options?: CustomOptions | undefined) {
+    return request<TData>("POST", url, { ...options, body, isAuthApi: true });
+  },
+  put<TData>(url: string, body: any, options?: CustomOptions | undefined) {
+    return request<TData>("PUT", url, { ...options, body, isAuthApi: true });
+  },
+  delete<TData>(url: string, options?: CustomOptions | undefined) {
+    return request<TData>("DELETE", url, { ...options, isAuthApi: true });
+  },
+};
+
+const convertObjectToSearchParams = (params: any) => {
+  const searchParams = new URLSearchParams();
+  for (const key in params) {
+    if (params.hasOwnProperty(key)) {
+      searchParams.append(key, params[key]);
+    }
+  }
+  return searchParams.toString();
+};
+export { http, httpAuth };

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import AppImage from "@/components/ui/app-image";
@@ -8,7 +9,7 @@ import SectionHeading from "@/components/section/heading";
 
 const members = [
   {
-    name: "Nguyễn Phạm Minh Triết",
+    name: "Trần Văn Hữu",
     position: "Founder, Chủ nhiệm, Trưởng ban Lập trình",
   },
   {
@@ -16,34 +17,51 @@ const members = [
     position: "Trưởng ban đề án",
   },
   {
-    name: "Nguyễn Minh Thắng1",
+    name: "Lê Tuấn Kiệt",
     position: "Trưởng ban đề án1",
   },
   {
-    name: "Nguyễn Minh Thắng2",
+    name: "Nguyễn Văn Minh",
     position: "Trưởng ban đề án2",
   },
   {
-    name: "Nguyễn Minh Thắng3",
+    name: "Nguyễn Thị Thu Huyền",
+    position: "Trưởng ban đề án3",
+  },
+  {
+    name: "Võ Hoàng Tuấn",
+    position: "Trưởng ban đề án3",
+  },
+  {
+    name: "Trần Phước Yên",
+    position: "Trưởng ban đề án3",
+  },
+  {
+    name: "Hồ Tuấn Phước",
+    position: "Trưởng ban đề án3",
+  },
+  {
+    name: "Võ Gia Huy",
     position: "Trưởng ban đề án3",
   },
 ];
 
-const Sec5 = () => {
+const Member = () => {
+  const path = usePathname();
   return (
-    <div className="section_home flex max-h-[700px] flex-col items-center justify-center">
+    <div
+      className={cn(
+        "section_home flex flex-col items-center justify-center max-xs:hidden",
+        {
+          "max-xs:block": path === "/the-he",
+        }
+      )}
+    >
       <SectionHeading text="Ban chủ nhiệm" />
-      <div className="flex w-full select-none gap-node overflow-hidden">
-        <div className="flex min-w-full shrink-0 animate-marquee_member gap-node">
-          {members.map((member, index) => (
-            <MemberCard key={index + 1} member={member} />
-          ))}
-        </div>
-        <div className="flex min-w-full shrink-0 animate-marquee_member gap-node">
-          {members.map((member, index) => (
-            <MemberCard key={index + 1} member={member} />
-          ))}
-        </div>
+      <div className="grid grid-cols-3 gap-node max-xs:!grid-cols-1 max-sm:grid-cols-2">
+        {members.map((member, index) => (
+          <MemberCard key={index + 1} member={member} />
+        ))}
       </div>
     </div>
   );
@@ -58,12 +76,7 @@ type TMemberCardProps = {
 };
 const MemberCard = ({ className, member }: TMemberCardProps) => {
   return (
-    <div
-      className={cn(
-        "flex w-full basis-1/4 flex-col pb-4 max-xs:basis-full",
-        className
-      )}
-    >
+    <div className={cn("flex flex-col pb-4 max-xs:w-full", className)}>
       <AppImage
         src={"/avatar_member.webp"}
         alt="avatar_member"
@@ -73,7 +86,7 @@ const MemberCard = ({ className, member }: TMemberCardProps) => {
         loading="lazy"
         decoding="async"
       />
-      <div className="flex flex-1 flex-col px-4 text-lg">
+      <div className="flex flex-1 flex-col text-lg">
         <span className="text-wrap font-semibold">{member.position}</span>
         <span className="mt-auto text-wrap font-semibold text-primary">
           {member.name}
@@ -83,4 +96,4 @@ const MemberCard = ({ className, member }: TMemberCardProps) => {
     </div>
   );
 };
-export default Sec5;
+export default Member;
