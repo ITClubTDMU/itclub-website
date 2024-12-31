@@ -1,3 +1,4 @@
+import ScrollToTop from "@/components/scroll-to-top";
 import React, { PropsWithChildren } from "react";
 
 type HomeLayoutProps = PropsWithChildren<{
@@ -21,6 +22,7 @@ const HomeLayout = ({
       {about}
       {service}
       {news}
+      <ScrollToTop elementId="hom_gobacktop" />
     </div>
   );
 };

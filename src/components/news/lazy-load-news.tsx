@@ -2,6 +2,8 @@ import React, { memo, useEffect } from "react";
 import { NewsService } from "@/services/newsService";
 import { useQuery } from "@tanstack/react-query";
 
+import { useObserver } from "@/hooks/useObserver";
+
 import CardNews from "../card/card-news";
 import CardNewsSkeleton from "../card/card-news-skeleton";
 
@@ -21,24 +23,27 @@ const LazyLoadNews = ({ page }: LazyLoadNewsProps) => {
     staleTime: 1000 * 60 * 5,
   });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // console.log(entry.target);
-          observer.disconnect();
-          setPageLazy(pageLazy + 1);
-        }
-      });
-    });
-    const target = document.getElementById("end_observe");
-    // console.log("target", target);
-    if (target) observer.observe(target);
-    return () => {
-      if (target) observer.unobserve(target);
-    };
-  }, [data]);
-
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver((entries) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         // console.log(entry.target);
+  //         observer.disconnect();
+  //         setPageLazy(pageLazy + 1);
+  //       }
+  //     });
+  //   });
+  //   const target = document.getElementById("end_observe");
+  //   // console.log("target", target);
+  //   if (target) observer.observe(target);
+  //   return () => {
+  //     if (target) observer.unobserve(target);
+  //   };
+  // }, [data]);
+  useObserver(
+    { targetElementId: "end_observe", action: () => setPageLazy(page + 1) },
+    [data]
+  );
   return (
     <>
       {!data &&

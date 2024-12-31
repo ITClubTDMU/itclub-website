@@ -1,17 +1,20 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NewsService } from "@/services/newsService";
 import { useQuery } from "@tanstack/react-query";
 
+import { useObserver } from "@/hooks/useObserver";
 import CardNews from "@/components/card/card-news";
 import LatestNews from "@/components/news/latest-news";
 import LazyLoadNews from "@/components/news/lazy-load-news";
 import SectionHeading from "@/components/section/heading";
 
+import ScrollToTop from "../../components/scroll-to-top";
+
 const News = () => {
   const [page, setPage] = useState(1);
-  // console.log("page", page);
+
   const { data } = useQuery({
     queryKey: ["news", "page1"],
     queryFn: async () =>
@@ -22,25 +25,17 @@ const News = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          observer.disconnect();
-          setPage(page + 1);
-        }
-      });
-    });
-    const target = document.getElementById("end_observe");
-    // console.log("target", target);
-    if (target) observer.observe(target);
-    return () => {
-      if (target) observer.unobserve(target);
-    };
-  }, [data]);
+  useObserver(
+    {
+      targetElementId: "end_observe",
+      action: () => setPage(page + 1),
+    },
+    [data]
+  );
 
   return (
     <div className="mx-auto mt-3 max-w-[1200px] px-extraPageHorizontal pb-40">
+      <ScrollToTop elementId="news_backToTop" />
       <SectionHeading text="Tin tức" />
       <LatestNews />
 

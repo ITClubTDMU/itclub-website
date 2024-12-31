@@ -1,18 +1,19 @@
 "use client";
-import React, { useState } from 'react'
-import NestedA from './nestedA';
-import { Button } from '@/components/ui/button';
+
+import React from "react";
+
+import { cn } from "@/lib/utils";
 
 const TestPage = () => {
-  const [active, setActive] = useState(1);
-  
-    console.log('Main', active);
   return (
-    <div>
-      <NestedA />
-      <Button onClick={() => setActive(active + 1)}>Main</Button>
+    <div
+      className={cn("h-40 w-full max-sm:bg-blue-500", {
+        "max-xs:bg-red-500": true,
+      })}
+    >
+      asfaf
     </div>
-  )
-}
+  );
+};
 
-export default TestPage
+export default TestPage;
