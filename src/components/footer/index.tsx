@@ -1,11 +1,12 @@
 import React from "react";
+import Link from "next/link";
 
 import SectionTitle from "../section/title";
 import AppImage from "../ui/app-image";
 
 const Footer = () => {
   return (
-    <div className="mt-auto flex w-full items-center justify-center gap-40 px-[40px] h-max py-20 shadow-inner max-xs:flex-col max-xs:gap-20 max-xs:px-[10px]">
+    <div className="mt-auto flex h-max w-full items-center justify-center gap-40 px-[40px] py-20 shadow-inner max-xs:flex-col max-xs:gap-20 max-xs:px-[10px]">
       <div className="organization flex items-center">
         <AppImage
           ratio={1}
@@ -18,7 +19,14 @@ const Footer = () => {
       <div className="flex flex-col">
         <SectionTitle text="Liên hệ" />
         <Info label="Email:" text="clbit@tdmu.edu.vn" />
-        <Info label="Fanpage:" text="facebook.com/TDMU.IT.CLUB" />
+        <Info
+          label="Fanpage:"
+          text={
+            <Link href={"https://facebook.com/TDMU.IT.CLUB"}>
+              facebook.com/TDMU.IT.CLUB
+            </Link>
+          }
+        />
         <Info
           label="Địa chỉ:"
           text="Số 06, Trần Văn Ơn, Phú Hòa, Thủ Dầu Một, Bình Dương"
@@ -30,7 +38,7 @@ const Footer = () => {
 
 type TInfoProps = {
   label: string;
-  text: string;
+  text: string | React.ReactNode;
 };
 const Info = ({ label, text }: TInfoProps) => {
   return (

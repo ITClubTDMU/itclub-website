@@ -1,11 +1,16 @@
 import React from "react";
 import Image, { ImageProps } from "next/image";
 
+
+
 import { cn } from "@/lib/utils";
+
+
 
 import { AspectRatio } from "./aspect-ratio";
 
-type TImageProps = ImageProps & {
+
+export type TAppImageProps = ImageProps & {
   container?: string;
   ratio?: number;
 };
@@ -16,7 +21,7 @@ const AppImage = ({
   className,
   container,
   ...rest
-}: TImageProps) => {
+}: TAppImageProps) => {
   return (
     <div className={cn("relative h-full w-full", container)}>
       {!ratio ? (

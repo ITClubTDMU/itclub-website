@@ -20,7 +20,7 @@ const navItems = [
   // { name: "Giá trị", link: "#gia-tri-mang-lai" },
   { name: "Thế hệ", link: "/the-he" },
   { name: "Tin tức", link: "/tin-tuc" },
-  { name: "Kết nối", link: "/comingsoon" },
+  // { name: "Kết nối", link: "/comingsoon" },
 ];
 
 const NavMenu = () => {
@@ -33,7 +33,7 @@ const NavMenu = () => {
           <Menu className="hidden h-12 w-12 text-blue-500 max-xs:block" />
         </SheetTrigger>
         <SheetContent
-          className="max-w-[200px] px-0 data-[state=open]:xs:hidden"
+          className="max-w-[200px] px-0 data-[state=open]:xs:hidden z-[99999999999999999999999999999]"
           sheetOverlayClassname="data-[state=open]:xs:hidden"
         >
           <SheetTitle></SheetTitle>

@@ -71,6 +71,7 @@ body {
   html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+    line-height: 1.8;
   }
 }
 
@@ -87,14 +88,14 @@ body {
   @screen max-xs {
     :root {
       --space-node: 1.5rem;
-      --extra-pageHorizontal: 2rem;
+      --extra-pageHorizontal: 1rem;
     }
   }
 }
 
 @layer components {
   .section_home {
-    @apply mb-section h-auto px-extraPageHorizontal mx-auto;
+    @apply mx-auto mb-section h-auto px-extraPageHorizontal;
     max-width: calc(120rem + var(--extra-pageHorizontal) * 2);
   }
 }
