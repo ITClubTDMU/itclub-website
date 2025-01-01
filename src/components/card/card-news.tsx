@@ -12,7 +12,7 @@ type TCardNews = {
   data?: News;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
+const CardNews = ({ size = "lg", className, data, ...rest }: TCardNews) => {
   return (
     <div
       className={cn(
@@ -27,7 +27,7 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
         fill
         ratio={16 / 9}
         className="rounded-tl-2xl rounded-tr-2xl"
-        container="max-h-max"
+        container="max-h-max max-h-[200px]"
       />
       <div className="content px-5 pb-10">
         <div className="flex flex-col gap-2 font-medium">
@@ -37,7 +37,7 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
           </Link>
         </div>
         <p
-          className={cn("short-description", {
+          className={cn("short-description max-xs:hidden", {
             hidden: size === "md",
             "line-clamp-6": size === "lg",
           })}
