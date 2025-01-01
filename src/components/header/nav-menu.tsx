@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
-
-
 import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-
-
-
-
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const navItems = [
   { name: "Trang chủ", link: "/" },
@@ -33,7 +33,7 @@ const NavMenu = () => {
           <Menu className="hidden h-12 w-12 text-blue-500 max-xs:block" />
         </SheetTrigger>
         <SheetContent
-          className="max-w-[200px] px-0 data-[state=open]:xs:hidden z-[99999999999999999999999999999]"
+          className="z-[99999999999999999999999999999] max-w-[200px] px-0 data-[state=open]:xs:hidden"
           sheetOverlayClassname="data-[state=open]:xs:hidden"
         >
           <SheetTitle></SheetTitle>
@@ -50,7 +50,7 @@ type SiteMenuProps = {
 };
 
 const SiteMenu = ({ className, variant }: SiteMenuProps) => {
-  const [active, setActive] = useState(navItems[0].name);
+  const path = usePathname().split("/")[1];
 
   return (
     <ul
@@ -69,15 +69,14 @@ const SiteMenu = ({ className, variant }: SiteMenuProps) => {
             "nav-item cursor-pointer font-semibold transition-all duration-300 ease-in-out",
             {
               "font-semibold text-blue-500 drop-shadow-lg":
-                active === item.name,
-              "hover:text-blue-500 hover:drop-shadow-lg": active !== item.name,
+                path === item.link.split("/")[1],
+              "hover:text-blue-500 hover:drop-shadow-lg":
+                path !== item.link.split("/")[1],
               "mt-10 w-full px-4 py-5 shadow-none": variant === "mobile",
             }
           )}
         >
-          <Link href={item.link} onClick={() => setActive(item.name)}>
-            {item.name}
-          </Link>
+          <Link href={item.link}>{item.name}</Link>
         </li>
       ))}
       {/* <Button className="ml-4 mt-node hidden max-xs:block">
