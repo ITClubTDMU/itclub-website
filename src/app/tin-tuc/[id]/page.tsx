@@ -28,7 +28,25 @@ const DetailNews = () => {
         />
       </div>
 
-      <div className="mx-auto max-w-[720px] px-6">{data?.payload.content}</div>
+      <div
+        className="mx-auto max-w-[720px] px-6"
+        dangerouslySetInnerHTML={{
+          __html: data?.payload.content ?? "",
+        }}
+      ></div>
+
+      <div className="mx-auto grid max-w-[720px] grid-cols-2 px-6">
+        ầ
+        {data?.payload.images.map((image, index) => (
+          <AppImage
+            src={image}
+            alt={`${index} image`}
+            key={index + 1}
+            ratio={16 / 9}
+            container="max"
+          />
+        ))}
+      </div>
     </div>
   );
 };
