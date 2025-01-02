@@ -8,6 +8,7 @@ export type News = {
   categoriesString?: string;
   createdAt?: number;
   updatedAt?: number | null;
+  images: string[];
 };
 
 export type NewsPayload = {
