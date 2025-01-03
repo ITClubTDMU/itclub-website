@@ -54,8 +54,6 @@ const SectionService = ({
           ratio={4 / 3}
           src={"/sec_gia_tri.png"}
           alt="sec-gia-tri"
-          container="  "
-          objectFit="contain"
           {...imageProps}
         />
       </motion.div>

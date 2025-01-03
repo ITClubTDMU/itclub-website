@@ -35,7 +35,7 @@ const services: {
 const ServicePage = () => {
   return (
     <div
-      className="section_home flex flex-col justify-center"
+      className="section_home flex flex-col justify-center mt-section"
       id="gia-tri-mang-lai"
     >
       <SectionHeading text="giá trị mang lại" />

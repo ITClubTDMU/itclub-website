@@ -24,12 +24,11 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
       <AppImage
         src={data?.thumbnail ?? "/images/placeholder.jpg"}
         alt="thumbnail news"
-        fill
         ratio={16 / 9}
         className="rounded-tl-2xl rounded-tr-2xl"
-        container="max-h-max max-h-[300px] overflow-hidden"
+        container=" overflow-hidden"
       />
-      <div className="content px-5 pb-10">
+      <div className="content flex-1 px-5 pb-10">
         <div className="flex flex-col gap-2 font-medium">
           <span className="text-secondary">{formatDate(data?.createdAt)}</span>
           <Link

@@ -18,9 +18,11 @@ const LatestNews = () => {
   });
 
   return (
-    <div className="not-important-news grid grid-cols-2 gap-node max-sm:grid-cols-1  mx-auto">
+    <div className="not-important-news mx-auto grid grid-cols-2 gap-node max-sm:grid-cols-1 max-w-[1200px]">
       {data
-        ? data?.payload.map((news) => <CardNews key={news._id} data={news} className="" size="lg" />)
+        ? data?.payload.map((news) => (
+            <CardNews key={news._id} data={news} className="" size="lg" />
+          ))
         : Array.from({ length: 4 }).map((_, index) => (
             <CardNewsSkeleton key={index + 1} />
           ))}

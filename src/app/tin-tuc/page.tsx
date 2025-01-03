@@ -10,7 +10,7 @@ import LatestNews from "@/components/news/latest-news";
 import LazyLoadNews from "@/components/news/lazy-load-news";
 import SectionHeading from "@/components/section/heading";
 
-import ScrollToTop from "../../components/scroll-to-top";
+import ScrollToTop from "@/components/scroll-to-top";
 
 const News = () => {
   const [page, setPage] = useState(1);

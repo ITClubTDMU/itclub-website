@@ -8,26 +8,23 @@ import SectionHeading from "@/components/section/heading";
 
 const AboutPage = () => {
   return (
-    <div
-      className="section_home flex h-max flex-col justify-center"
-      id="about-us"
-    >
+    <div className="section_home flex flex-col justify-center" id="about-us">
       <SectionHeading text="Về câu lạc bộ IT" />
       <div className="mx-auto grid w-[80%] grid-cols-4 items-center gap-40 max-xs:w-full max-sm:grid-cols-none max-sm:gap-3">
         <motion.div
-          className="col-span-2 h-max max-sm:order-2 max-sm:mx-auto max-sm:max-w-[80%]"
+          className="col-span-2 w-full max-sm:order-2 max-sm:mx-auto max-sm:max-w-[80%]"
           initial={{
-            rotate: -90,
-            translate: "-200px 200px",
+            opacity: 0,
+            scale: 0,
           }}
           whileInView={{
-            rotate: 0,
-            translate: "0px 0px",
+            opacity: 1,
+            scale: 1,
             transition: { duration: 1, ease: "easeInOut" },
           }}
           viewport={{ once: true }}
         >
-          <AppImage src={"/aboutus.png"} alt="aboutus" ratio={3 / 4} />
+          <AppImage src={"/aboutus.png"} alt="aboutus" ratio={3/4} />
         </motion.div>
 
         <div className="col-span-2 flex flex-col">
