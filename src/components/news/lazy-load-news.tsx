@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 import { NewsService } from "@/services/newsService";
 import { useQuery } from "@tanstack/react-query";
 
@@ -9,37 +9,29 @@ import CardNewsSkeleton from "../card/card-news-skeleton";
 
 interface LazyLoadNewsProps {
   page: number;
+  pageSize: number;
 }
 
-const LazyLoadNews = ({ page }: LazyLoadNewsProps) => {
+const LazyLoadNews = ({ page, pageSize }: LazyLoadNewsProps) => {
   const [pageLazy, setPageLazy] = React.useState(page);
+
   const { data } = useQuery({
     queryKey: ["news", page],
     queryFn: async () =>
       await NewsService.getAll({
         pageNumber: page,
-        pageSize: 12,
+        pageSize,
       }),
     staleTime: 1000 * 60 * 5,
   });
 
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver((entries) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         // console.log(entry.target);
-  //         observer.disconnect();
-  //         setPageLazy(pageLazy + 1);
-  //       }
-  //     });
-  //   });
-  //   const target = document.getElementById("end_observe");
-  //   // console.log("target", target);
-  //   if (target) observer.observe(target);
-  //   return () => {
-  //     if (target) observer.unobserve(target);
-  //   };
-  // }, [data]);
+  // console.log(
+  //   "s",
+  //   page,
+  //   pageSize,
+  //   data?.payload.slice(...(pageSize === 17 ? [0, -1] : [0]))
+  // );
+
   useObserver(
     { targetElementId: "end_observe", action: () => setPageLazy(page + 1) },
     [data]
@@ -47,23 +39,24 @@ const LazyLoadNews = ({ page }: LazyLoadNewsProps) => {
   return (
     <>
       {!data &&
-        Array.from({ length: 12 }).map((_, index) => (
+        Array.from({ length: 16 }).map((_, index) => (
           <CardNewsSkeleton key={index + 1} className="" />
         ))}
-      {data?.payload.map((news, index) => (
-        <CardNews
-          key={index + 1}
-          id={
-            index === data.payload.length - 1 && page === pageLazy
-              ? "end_observe"
-              : `observe ${page}` + index
-          }
-          data={news}
-          className="animate-fadeIn"
-        />
-      ))}
+      {data?.payload.map((news, index) => {
+        const isEndObserve =
+          index === data.payload.length - 1 && page === pageLazy;
+
+        return (
+          <CardNews
+            key={index + 1}
+            id={isEndObserve ? "end_observe" : `observe ${page}` + index}
+            data={news}
+            className="animate-fadeIn"
+          />
+        );
+      })}
       {data && data.payload.length > 0 && pageLazy !== page && (
-        <LazyLoadNews page={pageLazy} />
+        <LazyLoadNews page={pageLazy} pageSize={17} />
       )}
       <div></div>
     </>

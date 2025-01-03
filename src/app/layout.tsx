@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} flex flex-col bg-background text-[1.6rem] transition-all duration-300 ease-in-out`}
+        className={`${roboto.variable} ${roboto.className} flex flex-col bg-background text-[1.6rem] transition-all duration-300 ease-in-out`}
       >
         <App>
           <Header />
