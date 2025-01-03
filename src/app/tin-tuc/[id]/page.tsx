@@ -1,13 +1,23 @@
 "use client";
 
 import React from "react";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { NewsService } from "@/services/newsService";
 import { useQuery } from "@tanstack/react-query";
 
 import AppImage from "@/components/ui/app-image";
+// import {
+//   Breadcrumb,
+//   BreadcrumbItem,
+//   BreadcrumbLink,
+//   BreadcrumbList,
+//   BreadcrumbPage,
+//   BreadcrumbSeparator,
+// } from "@/components/ui/breadcrumb";
 
 const DetailNews = () => {
+  const path = usePathname();
+  console.log(path);
   const { id } = useParams();
   const { data } = useQuery({
     queryKey: ["news", id],
@@ -19,15 +29,30 @@ const DetailNews = () => {
 
   return (
     <div className="min-h-screen pb-20">
-      <div className="relative h-max w-full">
-        <AppImage
-          src={data?.payload.thumbnail ?? "/images/placeholder.jpg"}
-          ratio={16 / 9}
-          alt="banner-activity"
-          container="max-h-[calc(100vh-var(--affix-header)-70px)] overflow-hidden mb-section"
-        />
-      </div>
+      <AppImage
+        src={data?.payload.thumbnail ?? "/images/placeholder.jpg"}
+        alt={"detail image"}
+        ratio={16 / 9}
+      />
 
+      {/* <div>
+        <Breadcrumb>
+          <BreadcrumbList>
+            {}
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div> */}
       <div
         className="mx-auto max-w-[720px] px-6"
         dangerouslySetInnerHTML={{
@@ -36,7 +61,6 @@ const DetailNews = () => {
       ></div>
 
       <div className="mx-auto grid max-w-[720px] grid-cols-2 px-6">
-        ầ
         {data?.payload.images.map((image, index) => (
           <AppImage
             src={image}
