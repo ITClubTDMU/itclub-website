@@ -12,20 +12,34 @@ const LatestNews = () => {
   const { data } = useQuery({
     queryKey: ["news", "4latest"],
     queryFn: async () => {
-      return await NewsService.getAll({ pageSize: 4 });
+      return await NewsService.getAll({ pageSize: 5 });
     },
     staleTime: 1000 * 60 * 5,
   });
 
   return (
-    <div className="not-important-news mx-auto grid grid-cols-2 gap-node max-sm:grid-cols-1 max-w-[1200px]">
+    <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-node max-xs:grid-cols-1 max-md:grid-cols-1">
       {data
-        ? data?.payload.map((news) => (
-            <CardNews key={news._id} data={news} className="" size="lg" />
-          ))
-        : Array.from({ length: 4 }).map((_, index) => (
-            <CardNewsSkeleton key={index + 1} />
+        ? data?.payload
+            .slice(0, 1)
+            .map((news) => (
+              <CardNews key={news._id} data={news} className="" size="lg" />
+            ))
+        : Array.from({ length: 1 }).map((_, index) => (
+            <CardNewsSkeleton key={index + 1} size="lg" />
           ))}
+
+      <div className="not-important-news grid grid-cols-2 gap-node max-xs:grid-cols-1">
+        {data
+          ? data?.payload
+              .slice(1)
+              .map((news) => (
+                <CardNews key={news._id} data={news} className="" size="md" />
+              ))
+          : Array.from({ length: 4 }).map((_, index) => (
+              <CardNewsSkeleton key={index + 1} size="md" />
+            ))}
+      </div>
     </div>
   );
 };

@@ -6,14 +6,14 @@ import { NewsService } from "@/services/newsService";
 import { useQuery } from "@tanstack/react-query";
 
 import AppImage from "@/components/ui/app-image";
-// import {
-//   Breadcrumb,
-//   BreadcrumbItem,
-//   BreadcrumbLink,
-//   BreadcrumbList,
-//   BreadcrumbPage,
-//   BreadcrumbSeparator,
-// } from "@/components/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const DetailNews = () => {
   const path = usePathname();
@@ -35,24 +35,24 @@ const DetailNews = () => {
         ratio={16 / 9}
       />
 
-      {/* <div>
+      <div className="mb-section">
         <Breadcrumb>
-          <BreadcrumbList>
-            {}
+          <BreadcrumbList className="mx-auto max-w-[80%] py-3 text-lg">
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              <BreadcrumbLink href="/">Trang chủ</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+              <BreadcrumbLink href="/tin-tuc">Tin tức</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+              <BreadcrumbPage>{data?.payload.title}</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-      </div> */}
+        <hr />
+      </div>
       <div
         className="mx-auto max-w-[720px] px-6"
         dangerouslySetInnerHTML={{

@@ -1,14 +1,43 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+
+
 
 import AppImage from "../ui/app-image";
 import NavMenu from "./nav-menu";
 
+
 const Header = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (!ref.current) return;
+      const div = ref.current;
+      if (window.scrollY > 20) {
+        div.style.backgroundColor = "transparent";
+        div.style.backdropFilter = "blur(6px)";
+      } else {
+        // div.style.display = "none";
+        div.style.backgroundColor = "white"
+        div.style.backdropFilter = "blur(0px)";
+      }
+    });
+
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
+  }, []);
+
   return (
-    <div className="fixed top-0 z-[99999] flex w-full items-center justify-center rounded-bl-lg rounded-br-lg bg-background px-extraPageHorizontal py-3 shadow-md">
+    <div
+      ref={ref}
+      className="fixed top-0 z-[99999] flex w-full items-center justify-center rounded-bl-lg rounded-br-lg bg-background px-extraPageHorizontal py-3 shadow-md"
+      onScrollCapture={(e) => console.log(e)}
+      onScroll={(e) => console.log(e)}
+    >
       <div className="flex w-full max-w-[1200px] items-center justify-between">
         <Link href="/">
           <AppImage

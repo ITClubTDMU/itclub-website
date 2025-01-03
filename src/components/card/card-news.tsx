@@ -16,7 +16,8 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
   return (
     <div
       className={cn(
-        "flex w-full flex-col gap-node rounded-2xl bg-white shadow-md",
+        "flex max-h-[450px] w-full flex-col gap-node rounded-2xl bg-white shadow-md",
+        { "max-h-[750px]": size === "lg" },
         className
       )}
       {...rest}
@@ -25,17 +26,17 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
         src={data?.thumbnail ?? "/images/placeholder.jpg"}
         alt="thumbnail news"
         ratio={16 / 9}
-        className="rounded-tl-2xl rounded-tr-2xl"
-        container=" overflow-hidden"
+        className="!max-h-[300px] rounded-tl-2xl rounded-tr-2xl"
+        container=" overflow-hidden "
       />
       <div className="content flex-1 px-5 pb-10">
-        <div className="flex flex-col gap-2 font-medium">
+        <div className="flex flex-col gap-2">
           <span className="text-secondary">{formatDate(data?.createdAt)}</span>
           <Link
             href={`/tin-tuc/${data?._id}`}
-            className="line-clamp-2 cursor-pointer uppercase hover:underline"
+            className="line-clamp-2 cursor-pointer font-medium uppercase hover:underline"
           >
-            {data?.title} {data?._id}
+            {data?.title}
           </Link>
         </div>
         <p
@@ -44,18 +45,7 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
             "line-clamp-4": size === "lg",
           })}
         >
-          {data?.shortDescription} Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Asperiores dolore aliquid assumenda earum laudantium
-          blanditiis totam, aliquam minus quod dignissimos! Consectetur, minima
-          optio placeat fugiat veritatis aperiam reiciendis perferendis
-          rem?Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Asperiores dolore aliquid assumenda earum laudantium blanditiis totam,
-          aliquam minus quod dignissimos! Consectetur, minima optio placeat
-          fugiat veritatis aperiam reiciendis perferendis rem?Lorem ipsum dolor
-          sit amet consectetur adipisicing elit. Asperiores dolore aliquid
-          assumenda earum laudantium blanditiis totam, aliquam minus quod
-          dignissimos! Consectetur, minima optio placeat fugiat veritatis
-          aperiam reiciendis perferendis rem?
+          {data?.shortDescription}
         </p>
       </div>
     </div>

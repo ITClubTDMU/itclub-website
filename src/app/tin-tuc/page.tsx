@@ -8,9 +8,8 @@ import { useObserver } from "@/hooks/useObserver";
 import CardNews from "@/components/card/card-news";
 import LatestNews from "@/components/news/latest-news";
 import LazyLoadNews from "@/components/news/lazy-load-news";
-import SectionHeading from "@/components/section/heading";
-
 import ScrollToTop from "@/components/scroll-to-top";
+import SectionHeading from "@/components/section/heading";
 
 const News = () => {
   const [page, setPage] = useState(1);
@@ -20,7 +19,7 @@ const News = () => {
     queryFn: async () =>
       await NewsService.getAll({
         pageNumber: 1,
-        pageSize: 12,
+        pageSize: 17,
       }),
     staleTime: 1000 * 60 * 5,
   });
@@ -44,16 +43,18 @@ const News = () => {
         id="container_news"
       >
         {data?.payload
-          .slice(4)
+          .slice(5)
           .map((news, index) => (
             <CardNews
               key={index + 1}
-              id={index === 7 && page === 1 ? "end_observe" : "observe" + index}
+              id={
+                index === 11 && page === 1 ? "end_observe" : "observe" + index
+              }
               data={news}
               className="animate-fadeIn"
             />
           ))}
-        {page > 1 && <LazyLoadNews page={page} />}
+        {page > 1 && <LazyLoadNews page={page} pageSize={17} />}
       </div>
     </div>
   );

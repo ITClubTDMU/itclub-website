@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image, { ImageProps } from "next/image";
 
@@ -18,26 +20,53 @@ const AppImage = ({
   container,
   ...rest
 }: TAppImageProps) => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [isError, setIsError] = React.useState(false);
+
   return (
-    <div className={cn("relative h-full w-full", container)}>
-      {ratio ? (
+    <div
+      className={cn(
+        "relative h-full w-full",
+        {
+          "bg-gray-200 blur-sm": isLoading,
+        },
+        container
+      )}
+    >
+      {isError ? (
         <AspectRatio ratio={ratio}>
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            {...rest}
-            className={cn("object-cover", className)}
-          />
+          <Image src={"/placeholder.jpg"} alt="error img" />
         </AspectRatio>
       ) : (
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          {...rest}
-          className={cn("object-cover", className)}
-        />
+        <>
+          {ratio ? (
+            <AspectRatio ratio={ratio}>
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                {...rest}
+                className={cn("object-cover", className)}
+                onLoad={() => {
+                  setIsLoading(false);
+                }}
+                onError={() => setIsError(true)}
+              />
+            </AspectRatio>
+          ) : (
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              {...rest}
+              className={cn("object-cover", className)}
+              onLoad={() => {
+                setIsLoading(false);
+              }}
+              onError={() => setIsError(true)}
+            />
+          )}
+        </>
       )}
     </div>
   );
