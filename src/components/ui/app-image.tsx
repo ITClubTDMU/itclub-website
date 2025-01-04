@@ -35,7 +35,7 @@ const AppImage = ({
     >
       {isError ? (
         <AspectRatio ratio={ratio}>
-          <Image src={"/placeholder.jpg"} alt="error img" />
+          <Image src={"/placeholder.webp"} alt="error img" />
         </AspectRatio>
       ) : (
         <>

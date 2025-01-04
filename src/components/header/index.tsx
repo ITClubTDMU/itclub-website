@@ -17,12 +17,12 @@ const Header = () => {
       if (!ref.current) return;
       const div = ref.current;
       if (window.scrollY > 20) {
-        div.style.backgroundColor = "transparent";
+        div.style.backgroundColor = "rgba(255,255,255,0.8)";
         div.style.backdropFilter = "blur(6px)";
       } else {
         // div.style.display = "none";
-        div.style.backgroundColor = "white"
         div.style.backdropFilter = "blur(0px)";
+        div.style.backgroundColor = "rgb(255,255,255)";
       }
     });
 
@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <div
       ref={ref}
-      className="fixed top-0 z-[99999] flex w-full items-center justify-center rounded-bl-lg rounded-br-lg bg-background px-extraPageHorizontal py-3 shadow-md"
+      className="fixed top-0 z-[99999] flex w-full items-center justify-center rounded-bl-lg rounded-br-lg bg-white px-extraPageHorizontal py-3 shadow-md"
       onScrollCapture={(e) => console.log(e)}
       onScroll={(e) => console.log(e)}
     >

@@ -18,7 +18,7 @@ const navItems = [
   // { name: "Hoạt động/Sự kiện", link: "/hoat-dong" },
   // { name: "Về chúng tôi", link: "#about-us" },
   // { name: "Giá trị", link: "#gia-tri-mang-lai" },
-  { name: "Thế hệ", link: "/the-he" },
+  { name: "Thành viên", link: "/thanh-vien" },
   { name: "Tin tức", link: "/tin-tuc" },
   // { name: "Kết nối", link: "/comingsoon" },
 ];
@@ -66,9 +66,9 @@ const SiteMenu = ({ className, variant }: SiteMenuProps) => {
         <li
           key={item.name}
           className={cn(
-            "nav-item cursor-pointer font-semibold transition-all duration-300 ease-in-out",
+            "nav-item cursor-pointer font-medium transition-all duration-300 ease-in-out",
             {
-              "font-semibold text-blue-500 drop-shadow-lg":
+              "font-medium text-blue-500 drop-shadow-lg":
                 path === item.link.split("/")[1],
               "hover:text-blue-500 hover:drop-shadow-lg":
                 path !== item.link.split("/")[1],
