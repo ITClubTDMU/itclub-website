@@ -27,7 +27,7 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
         alt="thumbnail news"
         ratio={16 / 9}
         className="!max-h-[300px] rounded-tl-2xl rounded-tr-2xl"
-        container=" overflow-hidden "
+        container=" overflow-hidden max-h-[300px]"
       />
       <div className="content flex-1 px-5 pb-10">
         <div className="flex flex-col gap-2">
