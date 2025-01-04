@@ -5,7 +5,7 @@ const ViewMore = () => {
   return (
     <Link
       href={"/tin-tuc"}
-      className="ml-auto mt-node w-max flex justify-end text-md font-medium uppercase text-primary underline hover:underline-offset-2"
+      className="ml-auto mt-node flex w-max justify-end text-md font-medium uppercase text-primary underline hover:underline-offset-2"
     >
       Xem thêm
     </Link>

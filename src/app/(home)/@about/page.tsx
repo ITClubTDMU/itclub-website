@@ -24,7 +24,7 @@ const AboutPage = () => {
           }}
           viewport={{ once: true }}
         >
-          <AppImage src={"/aboutus.png"} alt="aboutus" ratio={3/4} />
+          <AppImage src={"/aboutus.webp"} alt="aboutus" ratio={3/4} />
         </motion.div>
 
         <div className="col-span-2 flex flex-col">

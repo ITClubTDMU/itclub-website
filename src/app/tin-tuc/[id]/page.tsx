@@ -30,7 +30,7 @@ const DetailNews = () => {
   return (
     <div className="min-h-screen pb-20">
       <AppImage
-        src={data?.payload.thumbnail ?? "/images/placeholder.jpg"}
+        src={data?.payload.thumbnail ?? "/placeholder.jpg"}
         alt={"detail image"}
         ratio={16 / 9}
       />

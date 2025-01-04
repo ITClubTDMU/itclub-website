@@ -20,7 +20,7 @@ const SectionService = ({
   index,
 }: SectionServiceProps) => {
   return (
-    <div className="group grid w-full grid-cols-4 items-center font-medium max-xs:!max-w-full max-sm:mx-auto max-sm:max-w-[80%] max-sm:grid-cols-none">
+    <div className="group grid w-full grid-cols-4 items-center max-xs:!max-w-full max-sm:mx-auto max-sm:max-w-[80%] max-sm:grid-cols-none">
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{
