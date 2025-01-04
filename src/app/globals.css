@@ -98,4 +98,14 @@ body {
     @apply mx-auto mb-section h-auto px-extraPageHorizontal;
     max-width: calc(120rem + var(--extra-pageHorizontal) * 2);
   }
+  .froala-wrapper > * {
+    @apply !font-roboto;
+  }
+  .froala-wrapper #isPasted {
+    @apply !font-roboto !bg-none !text-md;
+  }
+
+  .froala-wrapper span {
+    @apply !mx-3 !h-max;
+  }
 }

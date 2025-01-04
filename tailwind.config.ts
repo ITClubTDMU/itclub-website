@@ -18,6 +18,9 @@ export default {
       "max-lg": { max: "1400.981px" },
     },
     extend: {
+      fontFamily: {
+        roboto: ["var(--font-roboto)"],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

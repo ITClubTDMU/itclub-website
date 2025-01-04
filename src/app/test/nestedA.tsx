@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 const NestedA = () => {
   const [active, setActive] = useState(1);
 
-  console.log("NestedA", active);
+  // console.log("NestedA", active);
 
   return (
     <div>

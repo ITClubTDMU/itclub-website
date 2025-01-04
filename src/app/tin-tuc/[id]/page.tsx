@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import { NewsService } from "@/services/newsService";
 import { useQuery } from "@tanstack/react-query";
 
@@ -16,8 +16,6 @@ import {
 } from "@/components/ui/breadcrumb";
 
 const DetailNews = () => {
-  const path = usePathname();
-  console.log(path);
   const { id } = useParams();
   const { data } = useQuery({
     queryKey: ["news", id],
@@ -28,11 +26,12 @@ const DetailNews = () => {
   });
 
   return (
-    <div className="min-h-screen pb-20">
+    <div className="min-h-screen pb-20 mt-[var(--affix-header)] bg-white">
       <AppImage
-        src={data?.payload.thumbnail ?? "/placeholder.jpg"}
+        src={data?.payload.thumbnail ?? '/placeholder.webp'}
         alt={"detail image"}
-        ratio={16 / 9}
+        ratio={2.35/1}
+        className="object-fill"
       />
 
       <div className="mb-section">
@@ -54,7 +53,7 @@ const DetailNews = () => {
         <hr />
       </div>
       <div
-        className="mx-auto max-w-[720px] px-6"
+        className="!font-roboto froala-wrapper mx-auto max-w-[720px] px-6"
         dangerouslySetInnerHTML={{
           __html: data?.payload.content ?? "",
         }}
@@ -66,7 +65,7 @@ const DetailNews = () => {
             src={image}
             alt={`${index} image`}
             key={index + 1}
-            ratio={16 / 9}
+            ratio={1}
             container="max"
           />
         ))}
