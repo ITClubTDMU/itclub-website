@@ -35,8 +35,6 @@ const Header = () => {
     <div
       ref={ref}
       className="fixed top-0 z-[99999] flex w-full items-center justify-center rounded-bl-lg rounded-br-lg bg-white px-extraPageHorizontal py-3 shadow-md"
-      onScrollCapture={(e) => console.log(e)}
-      onScroll={(e) => console.log(e)}
     >
       <div className="flex w-full max-w-[1200px] items-center justify-between">
         <Link href="/">

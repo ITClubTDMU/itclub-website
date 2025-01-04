@@ -9,7 +9,7 @@ interface ScrollToTopProps {
   elementId: string;
 }
 const ScrollToTop = ({ elementId }: ScrollToTopProps) => {
-  console.log("elementId-render", elementId);
+  // console.log("elementId-render", elementId);
   useEffect(() => {
     window.onscroll = () => {
       const button = document.getElementById(elementId);

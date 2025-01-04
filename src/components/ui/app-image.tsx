@@ -14,7 +14,7 @@ export type TAppImageProps = ImageProps & {
 
 const AppImage = ({
   alt,
-  ratio,
+  ratio = 0,
   src,
   className,
   container,
@@ -35,11 +35,11 @@ const AppImage = ({
     >
       {isError ? (
         <AspectRatio ratio={ratio}>
-          <Image src={"/placeholder.webp"} alt="error img" />
+          <Image src={"/placeholder.webp"} alt="error img" fill />
         </AspectRatio>
       ) : (
         <>
-          {ratio ? (
+          {ratio !== 0 ? (
             <AspectRatio ratio={ratio}>
               <Image
                 src={src}
@@ -51,6 +51,9 @@ const AppImage = ({
                   setIsLoading(false);
                 }}
                 onError={() => setIsError(true)}
+                priority={
+                  typeof src === "string" && src.startsWith("https://lh3.googleusercontent")
+                }
               />
             </AspectRatio>
           ) : (
@@ -64,6 +67,9 @@ const AppImage = ({
                 setIsLoading(false);
               }}
               onError={() => setIsError(true)}
+              priority={
+                  typeof src === "string" && src.startsWith("https://lh3.googleusercontent")
+                }
             />
           )}
         </>

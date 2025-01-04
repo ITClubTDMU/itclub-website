@@ -45,7 +45,7 @@ const ImageInGallery = ({
   colSpan,
   ...rest
 }: ImageInGalleryProps) => {
-  console.log(colSpan, rowSpan)
+  // console.log(colSpan, rowSpan)
   return (
     <div
       className={cn(imageVariants({ colSpan, rowSpan, className: container }))}

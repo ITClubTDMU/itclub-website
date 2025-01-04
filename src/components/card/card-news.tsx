@@ -16,20 +16,19 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
   return (
     <div
       className={cn(
-        "flex max-h-[450px] w-full flex-col gap-node rounded-2xl bg-white shadow-md",
-        { "max-h-[750px]": size === "lg" },
+        "flex w-full flex-col gap-node rounded-2xl bg-white pb-5 shadow-md",
         className
       )}
       {...rest}
     >
       <AppImage
-        src={data?.thumbnail ?? "/images/placeholder.jpg"}
+        src={data?.thumbnail ?? "/placeholder.webp"}
         alt="thumbnail news"
         ratio={16 / 9}
-        className="!max-h-[300px] rounded-tl-2xl rounded-tr-2xl"
-        container=" overflow-hidden max-h-[300px]"
+        className="rounded-tl-2xl rounded-tr-2xl"
+        container="max-h-max"
       />
-      <div className="content flex-1 px-5 pb-10">
+      <div className="content flex-1 px-5">
         <div className="flex flex-col gap-2">
           <span className="text-secondary">{formatDate(data?.createdAt)}</span>
           <Link
