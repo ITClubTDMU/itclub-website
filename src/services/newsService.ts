@@ -1,11 +1,11 @@
 import { News, NewsPayload, NewsSearchParams } from "@/types/news";
-import { httpAuth } from "@/lib/http";
+import { http, httpAuth } from "@/lib/http";
 
 const NEWS_PATH = "/news";
 
 export const NewsService = {
   getAll: async (searchParams?: Partial<NewsSearchParams>) => {
-    return await httpAuth.getList<News, Partial<NewsSearchParams>>(
+    return await http.getList<News, Partial<NewsSearchParams>>(
       NEWS_PATH,
       searchParams
     );

@@ -20,9 +20,10 @@ export type NewsPayload = {
 };
 
 export type NewsSearchParams = {
-  pageNumber: number;
-  pageSize: number;
+  pageNumber?: number;
+  pageSize?: number;
   sortBy?: string;
   order?: "asc" | "desc";
   search?: string;
+  categories: string[];
 };

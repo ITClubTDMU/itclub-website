@@ -2,27 +2,28 @@
 
 import React, { useState } from "react";
 import { NewsService } from "@/services/newsService";
-import { useLoadingStore } from "@/stores/loadingStore";
+import { useFilterNews } from "@/stores/filter-news-store";
 import { useQuery } from "@tanstack/react-query";
 
 import { useObserver } from "@/hooks/useObserver";
 import CardNews from "@/components/card/card-news";
+import CardNewsSkeleton from "@/components/card/card-news-skeleton";
 import LatestNews from "@/components/news/latest-news";
 import LazyLoadNews from "@/components/news/lazy-load-news";
 import ScrollToTop from "@/components/scroll-to-top";
 import SectionHeading from "@/components/section/heading";
 
-const News = () => {
-  const updateLoadingApp = useLoadingStore((state) => {
-    return state.updateLoading;
-  });
+import FilterNews from "./filter-news";
 
+const News = () => {
+  const filter = useFilterNews((state) => state.filter);
   const [page, setPage] = useState(1);
 
-  const { data, isPending } = useQuery({
-    queryKey: ["news", "page1"],
+  const { data } = useQuery({
+    queryKey: ["news", "page1", filter],
     queryFn: async () =>
       await NewsService.getAll({
+        ...filter,
         pageNumber: page,
         pageSize: 17,
       }),
@@ -36,8 +37,6 @@ const News = () => {
     },
     [data]
   );
-
-  if (!isPending) updateLoadingApp(false);
 
   return (
     <div className="mx-auto mt-3 max-w-[1200px] px-extraPageHorizontal pb-40">
@@ -62,8 +61,15 @@ const News = () => {
               className="animate-fadeIn"
             />
           ))}
+
+        {!data &&
+          Array.from({ length: 12 }).map((_, index) => (
+            <CardNewsSkeleton key={index + 1} />
+          ))}
         {page > 1 && <LazyLoadNews page={page} pageSize={17} />}
       </div>
+
+      <FilterNews />
     </div>
   );
 };

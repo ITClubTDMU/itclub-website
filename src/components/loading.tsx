@@ -14,7 +14,7 @@ const Loading = () => {
   return (
     <div
       className={cn(
-        "fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-white/80 backdrop:blur-[6px]",
+        "fixed left-0 top-0 z-[999999999] flex h-screen w-screen items-center justify-center bg-white/80 backdrop:blur-[6px]",
         {
           hidden: !isLoading,
         }
@@ -26,7 +26,7 @@ const Loading = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ repeat: Infinity, duration: 1, repeatType: "reverse" }}
-          className="font-medium"
+          className="font-medium text-primary"
         >
           Đang tải...
         </motion.p>

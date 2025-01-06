@@ -11,7 +11,7 @@ export default function NewsPage() {
     >
       <SectionHeading text="Tin tức" />
       <Suspense fallback={<div>loading</div>}>
-        <LatestNews />
+        <LatestNews className="mx-auto" />
       </Suspense>
       {/* <div>{data?.payload[0].title}</div> */}
       {/* <ViewMore /> */}

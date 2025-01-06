@@ -20,7 +20,11 @@ const Spinner: React.FC<SpinnerProps> = ({
         gap: "8px",
       }}
     >
-      <LoaderCircle width={size} height={size} className="animate-spin" />
+      <LoaderCircle
+        width={size}
+        height={size}
+        className="text-primary animate-spin"
+      />
       {text && <p style={{ fontSize: "14px", color: "#333" }}>{text}</p>}
     </div>
   );

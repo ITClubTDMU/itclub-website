@@ -55,7 +55,7 @@ const ServicePage = () => {
       id="gia-tri-mang-lai"
     >
       <SectionHeading text="giá trị mang lại" />
-      <div className="flex w-full  gap-node">
+      <div className="flex w-full  gap-20 max-sm:flex-col">
         {services.map((service, index) => (
           <SectionService
             key={index + 1}

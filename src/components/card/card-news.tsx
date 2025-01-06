@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { NewsService } from "@/services/newsService";
 import formatDate from "@/utils/formatDate";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { News } from "@/types/news";
 import { cn } from "@/lib/utils";
@@ -13,12 +17,22 @@ type TCardNews = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
+  const queryClient = useQueryClient();
+
   return (
     <div
       className={cn(
         "flex w-full flex-col gap-node rounded-2xl bg-white pb-5 shadow-md",
         className
       )}
+      onMouseEnter={() => {
+        if (!data) return;
+        queryClient.prefetchQuery({
+          queryKey: ["news", data?._id],
+          queryFn: async () => NewsService.get(data?._id),
+          staleTime: 1000 * 60 * 5,
+        });
+      }}
       {...rest}
     >
       <AppImage
