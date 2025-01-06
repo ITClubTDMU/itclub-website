@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <div
       ref={ref}
-      className="fixed top-0 z-[99999] flex w-full items-center justify-center rounded-bl-lg rounded-br-lg bg-white px-extraPageHorizontal py-3 shadow-md"
+      className="fixed top-0 z-[9999] flex w-full items-center justify-center rounded-bl-lg rounded-br-lg bg-white px-extraPageHorizontal py-3 shadow-md"
     >
       <div className="flex w-full max-w-[1200px] items-center justify-between">
         <Link href="/">
@@ -42,6 +42,7 @@ const Header = () => {
             src={"/logo.png"}
             alt="it club logo"
             container="w-20 h-20"
+            sizes="50px"
           />
         </Link>
 

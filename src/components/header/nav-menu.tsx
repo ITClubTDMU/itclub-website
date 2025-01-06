@@ -3,6 +3,9 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { NewsService } from "@/services/newsService";
+import { useLoadingStore } from "@/stores/loadingStore";
+import { useQueryClient } from "@tanstack/react-query";
 import { Menu } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -33,7 +36,7 @@ const NavMenu = () => {
           <Menu className="hidden h-12 w-12 text-blue-500 max-xs:block" />
         </SheetTrigger>
         <SheetContent
-          className="z-[99999999999999999999999999999] max-w-[200px] px-0 data-[state=open]:xs:hidden"
+          className="z-[99999] max-w-[200px] px-0 data-[state=open]:xs:hidden"
           sheetOverlayClassname="data-[state=open]:xs:hidden"
         >
           <SheetTitle></SheetTitle>
@@ -51,6 +54,8 @@ type SiteMenuProps = {
 
 const SiteMenu = ({ className, variant }: SiteMenuProps) => {
   const path = usePathname().split("/")[1];
+  const queryClient = useQueryClient();
+  const updateLoadingApp = useLoadingStore((state) => state.updateLoading);
 
   return (
     <ul
@@ -75,8 +80,28 @@ const SiteMenu = ({ className, variant }: SiteMenuProps) => {
               "mt-10 w-full px-4 py-5 shadow-none": variant === "mobile",
             }
           )}
+          onMouseEnter={() => {
+            if (item.link === "/tin-tuc") {
+              queryClient.prefetchQuery({
+                queryKey: ["news", "page1"],
+                queryFn: async () =>
+                  await NewsService.getAll({
+                    pageNumber: 1,
+                    pageSize: 17,
+                  }),
+                staleTime: 1000 * 60 * 5,
+              });
+            }
+          }}
         >
-          <Link href={item.link}>{item.name}</Link>
+          <Link
+            href={item.link}
+            onClick={() => {
+              updateLoadingApp(true);
+            }}
+          >
+            {item.name}
+          </Link>
         </li>
       ))}
       {/* <Button className="ml-4 mt-node hidden max-xs:block">

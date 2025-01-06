@@ -1,22 +1,27 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 import { NewsService } from "@/services/newsService";
 import { useQuery } from "@tanstack/react-query";
 
 import CardNews from "@/components/card/card-news";
 
 import CardNewsSkeleton from "../card/card-news-skeleton";
+import ViewMore from "./view-more";
 
 const LatestNews = () => {
-  const { data, isPending } = useQuery({
+  const path = usePathname();
+
+  const { data, isPending, isError, isRefetching, isFetching } = useQuery({
     queryKey: ["news", "4latest"],
     queryFn: async () => {
       return await NewsService.getAll({ pageSize: 5 });
     },
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 10,
   });
 
+  console.log("status ", isPending, isError, isRefetching, isFetching);
   return (
     <>
       {data && (
@@ -43,6 +48,10 @@ const LatestNews = () => {
             ))}
           </div>
         </div>
+      )}
+
+      {data && data.payload.length > 5 && path.startsWith("/tin-tuc") && (
+        <ViewMore />
       )}
     </>
   );
