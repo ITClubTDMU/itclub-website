@@ -1,5 +1,9 @@
 import type { Config } from "tailwindcss";
 
+
+
+
+
 export default {
   darkMode: ["class"],
   content: [
@@ -21,7 +25,11 @@ export default {
       fontFamily: {
         roboto: ["var(--font-roboto)"],
       },
+      boxShadow: {
+        // primaryz: "0px 8px 16px hsl(var(--primary))",
+      },
       colors: {
+        color: "hsl(var(--text-color))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

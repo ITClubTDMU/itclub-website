@@ -8,12 +8,35 @@ body {
   min-height: 100vh;
   max-width: 100vw;
 }
+/* Scrollbar track */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the width for vertical scrollbars */
+}
 
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the track */
+  border-radius: 10px; /* Make it rounded */
+}
+
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #cfcfcf; /* Color of the scrollbar */
+  border-radius: 10px; /* Make it rounded */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3; /* Darker shade on hover */
+}
+
+/* Scrollbar corner for crossbars in overflow */
+::-webkit-scrollbar-corner {
+  background: transparent; /* Hide scrollbar corner */
+}
 @layer base {
   :root {
-    --text: 207 43% 9%;
-    --background: 240 60% 99%;
-    --foreground: 240 10% 3.9%;
+    --text-color: 207 43% 9%;
+    --background: 0 0% 100%;
+    --foreground: 207 43% 9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
@@ -99,10 +122,10 @@ body {
     max-width: calc(120rem + var(--extra-pageHorizontal) * 2);
   }
   .froala-wrapper > * {
-    @apply !font-roboto;
+    @apply !font-roboto !text-md;
   }
   .froala-wrapper #isPasted {
-    @apply !font-roboto !bg-none !text-md;
+    @apply !bg-none !font-roboto !text-md;
   }
 
   .froala-wrapper span {
