@@ -1,10 +1,7 @@
 import React, { Suspense } from "react";
 
-import SectionHeading from "@/components/section/heading";
-
-
-import ViewMore from "./view-more";
 import LatestNews from "@/components/news/latest-news";
+import SectionHeading from "@/components/section/heading";
 
 export default function NewsPage() {
   return (
@@ -17,7 +14,7 @@ export default function NewsPage() {
         <LatestNews />
       </Suspense>
       {/* <div>{data?.payload[0].title}</div> */}
-      <ViewMore />
+      {/* <ViewMore /> */}
     </section>
   );
 }

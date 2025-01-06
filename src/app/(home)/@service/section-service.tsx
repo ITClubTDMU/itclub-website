@@ -20,7 +20,7 @@ const SectionService = ({
   index,
 }: SectionServiceProps) => {
   return (
-    <div className="group grid w-full grid-cols-4 items-center max-xs:!max-w-full max-sm:mx-auto max-sm:max-w-[80%] max-sm:grid-cols-none">
+    <div className="group flex w-full grid-cols-4 flex-col items-center max-xs:!max-w-full max-sm:mx-auto max-sm:max-w-[80%] max-sm:grid-cols-none">
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{
@@ -28,17 +28,14 @@ const SectionService = ({
           transition: { duration: 1, ease: "easeInOut" },
         }}
         viewport={{ once: true }}
-        className={cn(
-          "order-0 col-span-2 text-lg max-sm:order-none max-sm:px-[2rem]",
-          {
-            "order-1": index % 2 !== 0,
-          }
-        )}
+        className={cn("col-span-2 text-lg max-sm:order-none max-sm:px-[2rem]", {
+          "": index % 2 !== 0,
+        })}
       >
         {content}
       </motion.p>
       <motion.div
-        className="col-span-2 max-sm:w-[100%]"
+        className="col-span-2 mt-auto w-full max-sm:w-[100%]"
         initial={{
           opacity: 0,
           scale: 0,
@@ -55,6 +52,7 @@ const SectionService = ({
           src={"/sec_gia_tri.png"}
           alt="sec-gia-tri"
           {...imageProps}
+          container="mt-auto h-max"
         />
       </motion.div>
     </div>

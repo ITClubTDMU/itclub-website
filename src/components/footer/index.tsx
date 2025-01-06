@@ -13,6 +13,7 @@ const Footer = () => {
           src={"/logo.png"}
           alt="itclub logo"
           container="w-40 h-40"
+          sizes="100px"
         />
       </div>
 

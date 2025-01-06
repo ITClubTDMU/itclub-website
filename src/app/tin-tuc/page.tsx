@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { NewsService } from "@/services/newsService";
+import { useLoadingStore } from "@/stores/loadingStore";
 import { useQuery } from "@tanstack/react-query";
 
 import { useObserver } from "@/hooks/useObserver";
@@ -12,13 +13,17 @@ import ScrollToTop from "@/components/scroll-to-top";
 import SectionHeading from "@/components/section/heading";
 
 const News = () => {
+  const updateLoadingApp = useLoadingStore((state) => {
+    return state.updateLoading;
+  });
+
   const [page, setPage] = useState(1);
 
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ["news", "page1"],
     queryFn: async () =>
       await NewsService.getAll({
-        pageNumber: 1,
+        pageNumber: page,
         pageSize: 17,
       }),
     staleTime: 1000 * 60 * 5,
@@ -32,10 +37,13 @@ const News = () => {
     [data]
   );
 
+  if (!isPending) updateLoadingApp(false);
+
   return (
     <div className="mx-auto mt-3 max-w-[1200px] px-extraPageHorizontal pb-40">
       <ScrollToTop elementId="news_backToTop" />
       <SectionHeading text="Tin tức" />
+
       <LatestNews />
 
       <div

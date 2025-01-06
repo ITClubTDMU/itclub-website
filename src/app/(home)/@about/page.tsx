@@ -24,12 +24,17 @@ const AboutPage = () => {
           }}
           viewport={{ once: true }}
         >
-          <AppImage src={"/aboutus.webp"} alt="aboutus" ratio={3/4} />
+          <AppImage
+            src={"/aboutus.webp"}
+            alt="aboutus"
+            ratio={3 / 4}
+            sizes="(min-width: 1320px) 573px, (min-width: 920px) calc(46.05vw - 26px), (min-width: 520px) calc(85.26vw - 40px), calc(106.5vw - 21px)"
+          />
         </motion.div>
 
         <div className="col-span-2 flex flex-col">
           <motion.p
-            className="mb-node flex-1 font-medium leading-[2] md:text-lg max-sm:px-[2rem]"
+            className="mb-node flex-1 leading-[2] md:text-lg max-sm:px-[2rem]"
             initial={{ opacity: 0 }}
             whileInView={{
               opacity: 1,
