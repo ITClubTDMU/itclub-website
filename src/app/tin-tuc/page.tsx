@@ -19,7 +19,7 @@ const News = () => {
   const filter = useFilterNews((state) => state.filter);
   const [page, setPage] = useState(1);
 
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ["news", "page1", filter],
     queryFn: async () =>
       await NewsService.getAll({
@@ -28,6 +28,7 @@ const News = () => {
         pageSize: 17,
       }),
     staleTime: 1000 * 60 * 5,
+    retry: 3,
   });
 
   useObserver(
@@ -39,7 +40,7 @@ const News = () => {
   );
 
   return (
-    <div className="mx-auto mt-3 max-w-[1200px] px-extraPageHorizontal pb-40">
+    <div className="mx-auto mt-3 px-extraPageHorizontal pb-40">
       <ScrollToTop elementId="news_backToTop" />
       <SectionHeading text="Tin tức" />
 
@@ -62,7 +63,7 @@ const News = () => {
             />
           ))}
 
-        {!data &&
+        {!data && isPending &&
           Array.from({ length: 12 }).map((_, index) => (
             <CardNewsSkeleton key={index + 1} />
           ))}

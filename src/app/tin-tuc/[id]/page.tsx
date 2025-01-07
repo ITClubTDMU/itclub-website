@@ -26,7 +26,7 @@ const DetailNews = () => {
   });
 
   return (
-    <div className="mt-[var(--affix-header)] min-h-screen bg-white pb-20">
+    <div className="min-h-screen bg-white pb-20">
       <div className="mb-section mt-6">
         <Breadcrumb>
           <BreadcrumbList className="mx-auto max-w-[80%] py-3 text-lg">

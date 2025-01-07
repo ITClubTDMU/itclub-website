@@ -15,11 +15,11 @@ const MemberPage = () => {
   }, []);
   
   return (
-    <>
+    <div>
       {/* <Member />
       <ScrollToTop elementId="member_backToTop" /> */}
       <ComingSoon />
-    </>
+    </div>
   );
 };
 
