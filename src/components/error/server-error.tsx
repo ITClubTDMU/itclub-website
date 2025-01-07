@@ -13,7 +13,7 @@ const ServerError = ({ className, onAction }: ServerErrorProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center py-16 text-center mx-auto max-w-[200px]",
+        "flex flex-col items-center justify-center py-16 text-center mx-auto max-w-[300px]",
         className
       )}
     >
@@ -24,7 +24,7 @@ const ServerError = ({ className, onAction }: ServerErrorProps) => {
         Có lỗi xảy ra
       </h2>
       <p className="mt-2 text-sm text-gray-500">
-        Có thể hệ thống đang gặp sự cố, <br /> vui lòng thử lại sau
+        Có thể máy chủ đang gặp sự cố, <br /> vui lòng thử lại sau
       </p>
       <Button
         className="mt-4 hidden shadow-xl shadow-primary/20"

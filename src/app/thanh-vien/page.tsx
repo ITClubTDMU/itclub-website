@@ -2,9 +2,10 @@
 
 import React from "react";
 
-import Member from "@/components/member";
-import ScrollToTop from "@/components/scroll-to-top";
+// import Member from "@/components/member";
+// import ScrollToTop from "@/components/scroll-to-top";
 import { useLoadingStore } from "@/stores/loadingStore";
+import ComingSoon from "@/components/coming-soon";
 
 const MemberPage = () => {
   const updateLoadingApp = useLoadingStore(state => state.updateLoading);
@@ -15,8 +16,9 @@ const MemberPage = () => {
   
   return (
     <>
-      <Member />
-      <ScrollToTop elementId="member_backToTop" />
+      {/* <Member />
+      <ScrollToTop elementId="member_backToTop" /> */}
+      <ComingSoon />
     </>
   );
 };
