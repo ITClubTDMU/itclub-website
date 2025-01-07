@@ -20,12 +20,12 @@ const SectionService = ({
   index,
 }: SectionServiceProps) => {
   return (
-    <div className="group flex w-full flex-col items-center xs:flex-row xs:even:flex-row-reverse sm:flex-col max-xs:!max-w-full max-xs:flex-col max-xs:even:flex-col max-sm:mx-auto max-sm:max-w-[80%] sm:even:flex-col">
+    <div className="group flex w-full flex-col items-center xs:flex-row xs:even:flex-row-reverse sm:flex-col sm:even:flex-col max-xs:!max-w-full max-xs:flex-col max-xs:even:flex-col max-sm:mx-auto max-sm:max-w-[80%]">
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{
           opacity: 1,
-          transition: { duration: 1, ease: "easeInOut" },
+          transition: { duration: 1 * (index + 1), ease: "easeInOut" },
         }}
         viewport={{ once: true }}
         className={cn(
@@ -46,7 +46,7 @@ const SectionService = ({
         whileInView={{
           opacity: 1,
           scale: 1,
-          transition: { duration: 1, ease: "easeInOut" },
+          transition: { duration: 1 * (index + 1), ease: "easeInOut" },
         }}
         viewport={{ once: true }}
       >

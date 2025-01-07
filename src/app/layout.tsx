@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <App>
           <Header />
-          <div className="group flex-1 pb-10">{children}</div>
+          <div className="group flex-1 pb-10 max-w-[1200px] mx-auto">{children}</div>
           <Footer />
         </App>
       </body>

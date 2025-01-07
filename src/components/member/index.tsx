@@ -105,8 +105,9 @@ const MemberCard = ({ className, member }: TMemberCardProps) => {
       <AppImage
         src={member.avatar}
         alt="avatar_member"
-        ratio={3 / 4}
-        container="bg-[#73bdff] rounded-tl-xl rounded-tr-xl max-h-max"
+        ratio={1 /1}
+        container="bg-[#73bdff] rounded-full max-h-max"
+        className="rounded-full"
         draggable="false"
         loading="lazy"
         decoding="async"
