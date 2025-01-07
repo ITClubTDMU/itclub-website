@@ -50,7 +50,7 @@ const MemberCardBOD = ({ className, member }: TMemberBODCardProps) => {
   };
 
   return (
-    <div className={cn("flex w-full flex-col items-center pb-4 ", className)}>
+    <div className={cn("flex w-full flex-col items-center pb-4", className)}>
       <AppImage
         src={member.avatar}
         alt="avatar_member"
@@ -70,13 +70,16 @@ const MemberCardBOD = ({ className, member }: TMemberBODCardProps) => {
       <div className="flex items-center gap-3">
         {member.contact.map((c) => {
           return (
-            <div key={c.type}>
+            <div
+              key={c.type}
+              className="h-max w-max cursor-pointer rounded-full p-4 leading-none hover:bg-gray-100"
+            >
               {c.type === "fb" ? (
                 <Link
                   key={c.type}
                   href={c.link === "" ? "1" : "2"}
                   target="_blank"
-                  className="cursor-pointer rounded-full p-4 hover:bg-gray-100"
+                  className=""
                   onClick={(e) => {
                     if (c.isHidden) {
                       e.preventDefault();
@@ -95,9 +98,7 @@ const MemberCardBOD = ({ className, member }: TMemberBODCardProps) => {
                 <Button
                   key={c.type}
                   variant={"ghost"}
-                  className={cn(
-                    "cursor-pointer rounded-full p-4 hover:bg-gray-100"
-                  )}
+                  className={cn("h-max w-max p-0")}
                   onClick={() => {
                     handleCopy(c.link, c.isHidden);
                   }}

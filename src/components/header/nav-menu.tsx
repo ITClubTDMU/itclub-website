@@ -73,10 +73,8 @@ const SiteMenu = ({ className, variant }: SiteMenuProps) => {
           className={cn(
             "nav-item cursor-pointer font-medium transition-all duration-300 ease-in-out",
             {
-              "font-medium text-blue-500 drop-shadow-lg":
-                path === item.link.split("/")[1],
-              "hover:text-blue-500 hover:drop-shadow-lg":
-                path !== item.link.split("/")[1],
+              "font-medium text-primary": path === item.link.split("/")[1],
+              "hover:text-primary": path !== item.link.split("/")[1],
               "mt-10 w-full px-4 py-5 shadow-none": variant === "mobile",
             }
           )}

@@ -22,9 +22,9 @@ const HomeLayout = ({
     <div className="pb-20">
       {children}
       {banner}
-      {carouselmemberbod}
       {about}
       {service}
+      {carouselmemberbod}
       {news}
       <ScrollToTop elementId="hom_gobacktop" />
     </div>

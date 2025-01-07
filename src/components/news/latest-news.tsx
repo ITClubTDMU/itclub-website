@@ -18,6 +18,7 @@ import ViewMore from "./view-more";
 interface LatestNewsProps {
   className?: string;
 }
+
 const LatestNews = ({ className }: LatestNewsProps) => {
   const filter = useFilterNews((state) => state.filter);
 
@@ -47,7 +48,7 @@ const LatestNews = ({ className }: LatestNewsProps) => {
       {data && (
         <div
           className={cn(
-            "mx-auto grid max-w-[1200px] grid-cols-2 gap-node max-sm:grid-cols-1",
+            "mx-auto grid grid-cols-2 gap-node max-sm:grid-cols-1",
             className
           )}
         >
@@ -64,7 +65,7 @@ const LatestNews = ({ className }: LatestNewsProps) => {
       )}
 
       {isPending && (
-        <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-node max-sm:grid-cols-1">
+        <div className="mx-auto grid grid-cols-2 gap-node max-sm:grid-cols-1">
           <CardNewsSkeleton size="lg" />
 
           <div className="not-important-news grid grid-cols-2 grid-rows-2 gap-node max-xs:grid-cols-1 max-xs:grid-rows-none">
@@ -75,9 +76,9 @@ const LatestNews = ({ className }: LatestNewsProps) => {
         </div>
       )}
 
-      {data && data.payload.length > 5 && (path.startsWith("/tin-tuc") || path.startsWith('/')) && (
-        <ViewMore />
-      )}
+      {data &&
+        data.payload.length > 5 &&
+        (path.startsWith("/tin-tuc") || path.startsWith("/")) && <ViewMore />}
 
       {data?.payload.length === 0 && !isPending && <NoData />}
     </>
