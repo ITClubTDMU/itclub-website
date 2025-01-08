@@ -4,8 +4,13 @@ import AppImage from "@/components/ui/app-image";
 
 const Banner = () => {
   return (
-    <div className="max-h-[calc(100vh-var(--affix-header))] overflow-hidden mb-section">
-      <AppImage src={"/testimg_full.jpg"} ratio={16 / 9} alt="fallback" />
+    <div className="fixed left-0 top-[var(--affix-header)] h-max w-full overflow-hidden max-sm:relative max-sm:top-0 max-sm:z-10">
+      <AppImage
+        src={"/banner_itclub.jpg"}
+        ratio={2.24 / 1.1}
+        className="object-cover"
+        alt="fallback"
+      />
     </div>
   );
 };

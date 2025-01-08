@@ -12,7 +12,7 @@ const NoData = ({ onAction, className }: NoDataProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center py-16 text-center",
+        "flex flex-col items-center justify-center py-16 text-center m-auto",
         className
       )}
     >

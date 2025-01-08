@@ -62,7 +62,7 @@ const MemberCardBOD = ({ className, member }: TMemberBODCardProps) => {
         decoding="async"
         sizes={member.sizes}
       />
-      <div className="mt-3 flex flex-1 flex-col items-center text-lg">
+      <div className="mt-3 flex flex-1 flex-col text-center text-lg">
         <div className="text-wrap font-medium">{member.position}</div>
         <div className="font-medium text-primary">{member.name}</div>
       </div>
@@ -72,7 +72,7 @@ const MemberCardBOD = ({ className, member }: TMemberBODCardProps) => {
           return (
             <div
               key={c.type}
-              className="h-max w-max cursor-pointer rounded-full p-4 leading-none hover:bg-gray-100"
+              className="h-max w-max cursor-pointer rounded-full p-4 leading-[0] hover:bg-gray-100"
             >
               {c.type === "fb" ? (
                 <Link

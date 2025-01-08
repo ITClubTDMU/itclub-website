@@ -1,61 +1,27 @@
+"use client";
+
 import React from "react";
+import { motion } from "motion/react";
 
-
-
-import { TAppImageProps } from "@/components/ui/app-image";
 import SectionHeading from "@/components/section/heading";
 
-
-
-import SectionService from "./section-service";
-
-
-const services: {
-  content?: string;
-  imageProps?: Omit<TAppImageProps, "src"> & {
-    src: string;
-  };
-}[] = [
-  {
-    content:
-      "CLB IT TDMU mang đến các buổi học, các buổi ôn tập chuyên môn và bài tập thực tế nhằm giúp các thành viên nâng cao kiến thức chuyên ngành và kỹ năng lập trình.",
-    imageProps: {
-      src: "/hocthuat.webp",
-      alt: "hoc thuat",
-      sizes:
-        "(min-width: 1340px) 600px, (min-width: 920px) calc(41vw + 59px), (min-width: 520px) calc(80vw - 38px), calc(100vw - 20px)",
-    },
-  },
-  {
-    content:
-      "Là cầu nối giúp các thành viên giao lưu, học hỏi từ các anh chị đi trước, thầy cô và những người có kinh nghiệm trong lĩnh vực công nghệ thông tin.",
-    imageProps: {
-      src: "/giaoluu_ketnoi.webp",
-      alt: "alla",
-      sizes:
-        "(min-width: 1340px) 600px, (min-width: 920px) calc(41vw + 59px), (min-width: 520px) calc(80vw - 38px), calc(100vw - 20px)",
-    },
-  },
-  {
-    content:
-      "Tạo điều kiện ôn tập và rèn luyện, giúp thành viên tự tin tham gia các cuộc thi lập trình như Olympic Tin học, lập trình quốc tế ICPC, Hội thi lập trình sinh viên TDMU và nhiều sân chơi bổ ích khác.",
-    imageProps: {
-      src: "/thidau.webp",
-      alt: "alla",
-      sizes:
-        "(min-width: 1340px) 600px, (min-width: 920px) calc(41vw + 59px), (min-width: 520px) calc(80vw - 38px), calc(100vw - 20px)",
-    },
-  },
-];
+import CardService from "./card-service";
+import { services } from "./services";
 
 const ServicePage = () => {
   return (
     <div
-      className="section_home mt-section flex flex-col justify-center"
+      className="section_home mt-node flex flex-col justify-center"
       id="gia-tri-mang-lai"
     >
-      <SectionHeading text="giá trị mang lại" />
-      <div className="flex w-full  gap-20 max-sm:flex-col">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1, transition: { duration: 1 } }}
+        viewport={{ once: true }}
+      >
+        <SectionHeading text="CÂU LẠC BỘ MANG ĐẾN?" className="mt-0" />
+      </motion.div>
+      {/* <div className="flex w-full gap-20 max-sm:flex-col">
         {services.map((service, index) => (
           <SectionService
             key={index + 1}
@@ -63,6 +29,12 @@ const ServicePage = () => {
             imageProps={service.imageProps}
             index={index}
           />
+        ))}
+      </div> */}
+
+      <div className="flex w-full flex-wrap justify-center gap-node max-xs:flex-col max-xs:gap-14 max-xs:items-center">
+        {services.map((service, index) => (
+          <CardService key={index + 1} data={service} />
         ))}
       </div>
     </div>

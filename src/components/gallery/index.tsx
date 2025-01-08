@@ -1,4 +1,3 @@
-"use client";
 
 import {
   ClickHandlerProps,
@@ -12,7 +11,6 @@ import {
 import "react-photo-album/rows.css";
 
 import AppImage from "../ui/app-image";
-import { useState } from "react";
 
 interface PhotoGalleryProps extends RowsPhotoAlbumProps {
   photos: Photo[];
@@ -25,9 +23,6 @@ export default function PhotoGallery({
   onLoadImage,
   onClickCallBack,
 }: Readonly<PhotoGalleryProps>) {
-
-  const [dimension, setDimension] = useState<{ w: number; h: number }>();
-  console.log("dimension", dimension);
   return (
     <RowsPhotoAlbum
       photos={photos}
@@ -36,7 +31,7 @@ export default function PhotoGallery({
           { alt = "", title }: RenderImageProps,
           { photo }: RenderImageContext
         ) => {
-          console.log(onLoadImage);
+          // console.log(onLoadImage);
           return (
             <AppImage
               key={photo.src}
@@ -46,9 +41,8 @@ export default function PhotoGallery({
               ratio={1}
               onLoadCallBack={(w, h) => {
                 if (onLoadImage) {
-                  console.log("w, h app image", w, h);
+                  // console.log("w, h app image", w, h);
                   onLoadImage(w, h);
-                  setDimension({w, h})
                 }
               }}
             />

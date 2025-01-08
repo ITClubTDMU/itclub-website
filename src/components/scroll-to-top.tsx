@@ -3,7 +3,13 @@
 import React, { memo, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
 
+
+
 import { Button } from "@/components/ui/button";
+
+
+
+
 
 interface ScrollToTopProps {
   elementId: string;
@@ -24,7 +30,7 @@ const ScrollToTop = ({ elementId }: ScrollToTopProps) => {
     return () => {
       window.onscroll = null;
     };
-  }, []);
+  }, [elementId]);
 
   return (
     <Button

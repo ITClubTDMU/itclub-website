@@ -32,7 +32,9 @@ export default function RootLayout({
       >
         <App>
           <Header />
-          <div className="group flex-1 pb-10 w-screen max-w-[1200px] mx-auto mt-[var(--affix-header)]">{children}</div>
+          <div className="group mt-[var(--affix-header)] flex flex-1 flex-col">
+            {children}
+          </div>
           <Footer />
         </App>
       </body>

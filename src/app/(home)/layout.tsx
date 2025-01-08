@@ -19,13 +19,16 @@ const HomeLayout = ({
   carouselmemberbod,
 }: HomeLayoutProps) => {
   return (
-    <div className="pb-20">
+    <div className="flex flex-col">
       {children}
       {banner}
-      {about}
-      {service}
-      {carouselmemberbod}
-      {news}
+
+      <div className="relative z-10 mt-[100vh] h-max w-full flex-1 bg-white max-sm:mt-node">
+        {about}
+        {service}
+        {carouselmemberbod}
+        {news}
+      </div>
       <ScrollToTop elementId="hom_gobacktop" />
     </div>
   );

@@ -97,6 +97,7 @@ const SiteMenu = ({ className, variant }: SiteMenuProps) => {
             onClick={() => {
               updateLoadingApp(true);
             }}
+            className="h-full w-full block"
           >
             {item.name}
           </Link>

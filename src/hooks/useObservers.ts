@@ -1,5 +1,9 @@
 import { DependencyList, useEffect } from "react";
 
+
+
+
+
 export const useObservers = (
   {
     targetElementClassName,
@@ -26,5 +30,5 @@ export const useObservers = (
       if (targets) targets.forEach((target) => observer.unobserve(target));
       observer.disconnect();
     };
-  }, deps);
+  }, [...deps]);
 };
