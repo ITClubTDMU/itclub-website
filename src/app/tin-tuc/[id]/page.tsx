@@ -18,7 +18,7 @@ import LightBoxGallery from "@/components/gallery/light-box-gallery";
 
 const DetailNews = () => {
   const { id } = useParams();
-  console.log("id", id);
+  // console.log("id", id);
   const { data, isPending, isError } = useQuery({
     queryKey: ["news", id],
     queryFn: async () => {
@@ -27,7 +27,7 @@ const DetailNews = () => {
     staleTime: 1000 * 60 * 10,
   });
 
-  console.log("data", data, isError, isPending)
+  // console.log("data", data, isError, isPending)
   if (!isPending && !data) {
     return <ServerError />;
   }
