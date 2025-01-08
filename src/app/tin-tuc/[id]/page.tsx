@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { NewsService } from "@/services/newsService";
 import { useQuery } from "@tanstack/react-query";
 
+import { useTriggerLoadingApp } from "@/hooks/useTriggerLoadingApp";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -17,6 +18,8 @@ import ServerError from "@/components/error/server-error";
 import LightBoxGallery from "@/components/gallery/light-box-gallery";
 
 const DetailNews = () => {
+  useTriggerLoadingApp(false);
+
   const { id } = useParams();
   // console.log("id", id);
   const { data, isPending } = useQuery({

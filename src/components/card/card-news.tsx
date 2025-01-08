@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { NewsService } from "@/services/newsService";
+import { useLoadingStore } from "@/stores/loadingStore";
 import formatDate from "@/utils/formatDate";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -18,6 +19,7 @@ type TCardNews = {
 
 const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
   const queryClient = useQueryClient();
+  const updateLoadingApp = useLoadingStore((state) => state.updateLoading);
 
   return (
     <div
@@ -25,14 +27,6 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
         "flex w-full flex-col gap-node rounded-2xl bg-white pb-5 shadow-md",
         className
       )}
-      onMouseEnter={() => {
-        if (!data) return;
-        queryClient.prefetchQuery({
-          queryKey: ["news", data?._id],
-          queryFn: async () => NewsService.get(data?._id),
-          staleTime: 1000 * 60 * 5,
-        });
-      }}
       {...rest}
     >
       <AppImage
@@ -48,6 +42,17 @@ const CardNews = ({ size = "md", className, data, ...rest }: TCardNews) => {
           <Link
             href={`/tin-tuc/${data?._id}`}
             className="line-clamp-2 cursor-pointer font-medium uppercase hover:underline"
+            onMouseEnter={() => {
+              if (!data) return;
+              queryClient.prefetchQuery({
+                queryKey: ["news", data?._id],
+                queryFn: async () => NewsService.get(data?._id),
+                staleTime: 1000 * 60 * 5,
+              });
+            }}
+            onClick={() => {
+              updateLoadingApp(true);
+            }}
           >
             {data?.title}
           </Link>
