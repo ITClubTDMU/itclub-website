@@ -7,8 +7,7 @@ const members = [
       { type: "gmail", link: "huutv@tdmu.edu.vn", isHidden: false },
     ],
     avatar: "/members/thayhuu/thayhuu.webp",
-    sizes:
-      "(min-width: 1340px) 384px, (min-width: 920px) calc(27.25vw + 24px), (min-width: 520px) calc(49.74vw - 34px), calc(100vw - 20px)",
+    sizes: "120px",
   },
   {
     name: "Nguyễn Minh Thắng",
@@ -18,8 +17,7 @@ const members = [
       { type: "gmail", link: "", isHidden: true },
     ],
     avatar: "/members/thang/thang.webp",
-    sizes:
-      "(min-width: 1340px) 384px, (min-width: 920px) calc(27.25vw + 24px), (min-width: 520px) calc(50vw - 36px), calc(100vw - 20px)",
+    sizes: "120px",
   },
   {
     name: "Lê Tuấn Kiệt",
@@ -29,8 +27,7 @@ const members = [
       { type: "gmail", link: "", isHidden: true },
     ],
     avatar: "/members/kiet/kiet.webp",
-    sizes:
-      "(min-width: 1340px) 512px, (min-width: 920px) calc(36.5vw + 30px), (min-width: 520px) calc(66.58vw - 47px), calc(133.5vw - 28px)",
+    sizes: "120px",
   },
   {
     name: "Nguyễn Văn Minh",
@@ -40,8 +37,7 @@ const members = [
       { type: "gmail", link: "", isHidden: true },
     ],
     avatar: "/members/minh/minh.webp",
-    sizes:
-      "(min-width: 1320px) 511px, (min-width: 920px) 38.42vw, (min-width: 520px) calc(66.32vw - 46px), calc(133.5vw - 28px)",
+    sizes: "120px",
   },
   {
     name: "Nguyễn Thị Thu Huyền",
@@ -51,6 +47,7 @@ const members = [
       { type: "gmail", link: "", isHidden: true },
     ],
     avatar: "/members/huyen/huyen.webp",
+    sizes: "120px",
   },
   {
     name: "Võ Hoàng Tuấn",
@@ -60,6 +57,7 @@ const members = [
       { type: "gmail", link: "", isHidden: true },
     ],
     avatar: "/members/tuan/tuan.webp",
+    sizes: "120px",
   },
   {
     name: "Trần Phước Yên",
@@ -69,6 +67,7 @@ const members = [
       { type: "gmail", link: "", isHidden: true },
     ],
     avatar: "/members/yen/yen.webp",
+    sizes: "120px",
   },
   {
     name: "Hồ Tuấn Phước",
@@ -78,6 +77,7 @@ const members = [
       { type: "gmail", link: "", isHidden: true },
     ],
     avatar: "/members/phuoc/HoTuanPhuoc_nobg.webp",
+    sizes: "120px",
   },
   {
     name: "Võ Gia Huy",
@@ -87,6 +87,7 @@ const members = [
       { type: "gmail", link: "", isHidden: true },
     ],
     avatar: "/members/huy/huy.webp",
+    sizes: "120px",
   },
 ];
 

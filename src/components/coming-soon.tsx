@@ -11,15 +11,13 @@ const ComingSoon = () => {
   const router = useRouter();
 
   return (
-    <section
-      className={cn("flex h-screen items-center justify-center bg-gray-50")}
-    >
+    <section className={cn("flex h-screen items-center justify-center")}>
       <div className="p-6 text-center md:p-12">
         <h1 className="text-4xl font-bold text-gray-800 md:text-6xl">
           Coming Soon
         </h1>
         <p className="mt-4 text-lg text-gray-600">
-          Có vẽ tính năng này chưa được cập nhật
+          Có vẽ tính năng này sẽ được cập nhật sớm
         </p>
         <div>
           <AppImage src={"/comingsoon.webp"} alt="coming soon" ratio={1} />

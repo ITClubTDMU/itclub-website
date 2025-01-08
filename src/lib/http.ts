@@ -91,7 +91,7 @@ const http = {
     options?: Omit<CustomOptions, "body"> | undefined
   ) {
     if (searchParams) url += `?${convertObjectToSearchParams(searchParams)}`;
-
+    // console.log(url, "????");
     return request<TData[]>("GET", url, {
       ...options,
       isAuthApi: true,

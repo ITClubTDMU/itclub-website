@@ -35,7 +35,7 @@ export const CardNewsSkeleton = ({
         {size === "lg" && (
           <div className="space-y-2">
             {Array.from({ length: 3 }).map((_, i) => (
-              <Skeleton key={i} className="h-4 w-full" />
+              <Skeleton key={i  + 1} className="h-4 w-full" />
             ))}
           </div>
         )}

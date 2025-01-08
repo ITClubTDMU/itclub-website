@@ -4,7 +4,6 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { NewsService } from "@/services/newsService";
 import { useFilterNews } from "@/stores/filter-news-store";
-import { useLoadingStore } from "@/stores/loadingStore";
 import { useQuery } from "@tanstack/react-query";
 
 import { cn } from "@/lib/utils";
@@ -22,10 +21,6 @@ interface LatestNewsProps {
 const LatestNews = ({ className }: LatestNewsProps) => {
   const filter = useFilterNews((state) => state.filter);
 
-  const updateLoadingApp = useLoadingStore((state) => {
-    return state.updateLoading;
-  });
-
   const path = usePathname();
 
   const { data, isPending, isError } = useQuery({
@@ -35,8 +30,6 @@ const LatestNews = ({ className }: LatestNewsProps) => {
     },
     staleTime: 1000 * 60 * 10,
   });
-
-  if (!isPending) updateLoadingApp(false);
 
   // console.log("status ", isPending, isPaused, isError, isRefetching, isFetching);
 

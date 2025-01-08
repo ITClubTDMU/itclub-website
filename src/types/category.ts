@@ -5,4 +5,9 @@ type CategoryPayload = {
   updatedAt: number | null;
 };
 
-export { type CategoryPayload };
+type CategoryRes = {
+  payload: CategoryPayload[];
+  status: number;
+  message: string;
+};
+export { type CategoryPayload, type CategoryRes };

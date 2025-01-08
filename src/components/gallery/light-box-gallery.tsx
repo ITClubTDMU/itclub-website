@@ -23,7 +23,7 @@ interface LightBoxGalleryProps {
 const LightBoxGallery = ({ photos }: LightBoxGalleryProps) => {
   const [index, setIndex] = useState(-1);
   const [myPhotoLightBox, setMyPhotoLightBox] = useState<Photo[]>(photos);
-  console.log("myPhotoLightBox", myPhotoLightBox);
+  // console.log("myPhotoLightBox", myPhotoLightBox);
 
   return (
     <>
@@ -31,7 +31,7 @@ const LightBoxGallery = ({ photos }: LightBoxGalleryProps) => {
         photos={photos}
         onClickCallBack={({ index }) => setIndex(index)}
         onLoadImage={(w, h) => {
-          console.log("w, h", w, h);
+          // console.log("w, h", w, h);
           setMyPhotoLightBox((prev) => {
             return prev.map((photo) => {
               if (photo.width === 8 && photo.height === 16) {

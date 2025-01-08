@@ -5,6 +5,7 @@ const NEWS_PATH = "/news";
 
 export const NewsService = {
   getAll: async (searchParams?: Partial<NewsSearchParams>) => {
+    // console.log(searchParams, "????");
     return await http.getList<News, Partial<NewsSearchParams>>(
       NEWS_PATH,
       searchParams

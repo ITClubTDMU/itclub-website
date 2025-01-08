@@ -13,17 +13,24 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import ServerError from "@/components/error/server-error";
 import LightBoxGallery from "@/components/gallery/light-box-gallery";
 
 const DetailNews = () => {
   const { id } = useParams();
-  const { data } = useQuery({
+  // console.log("id", id);
+  const { data, isPending } = useQuery({
     queryKey: ["news", id],
     queryFn: async () => {
       return await NewsService.get(id as string);
     },
     staleTime: 1000 * 60 * 10,
   });
+
+  // console.log("data", data, isError, isPending)
+  if (!isPending && !data) {
+    return <ServerError />;
+  }
 
   return (
     <div className="min-h-screen bg-white pb-20">
@@ -45,44 +52,16 @@ const DetailNews = () => {
         </Breadcrumb>
         <hr />
       </div>
+      {/* 
+      <div>
+        {data?.payload.categories.map((category) => (<Bage))}
+      </div> */}
       <div
         className="froala-wrapper mx-auto max-w-[720px] px-6 !font-roboto"
         dangerouslySetInnerHTML={{
           __html: data?.payload.content ?? "",
         }}
       ></div>
-
-      {/* <div className="mx-auto grid max-w-[720px] grid-cols-2 px-6">
-        {data?.payload.images.map((image, index) => (
-          <AppImage
-            src={image}
-            alt={`${index} image`}
-            key={index + 1}
-            ratio={16 / 9}
-            onLoadCallBack={(w, h) => {
-              refDemension.current.push({ w, h });
-            }}
-            container="max"
-            className="object-contain"
-          />
-        ))}
-      </div> */}
-      {/* 
-      <div className="mx-auto max-w-[720px] px-6">
-        {data && (
-          <PhotoGallery
-            photos={data.payload.images.map((img, i) => {
-              return {
-                height: 9,
-                width: 16,
-                src: img,
-                alt: `image ${i + 1}`,
-                title: `image ${i + 1}`,
-              };
-            })}
-          />
-        )}
-      </div> */}
 
       <div className="relative mx-auto h-[100%] max-w-[720px] px-6">
         {data && (

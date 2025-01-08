@@ -6,7 +6,7 @@ import AppImage from "../ui/app-image";
 
 const Footer = () => {
   return (
-    <div className="mt-auto flex h-max w-full items-center justify-center gap-40 px-[40px] py-20 shadow-inner max-xs:flex-col max-xs:gap-20 max-xs:px-[10px]">
+    <div className="relative z-[10] mt-auto flex h-max w-full items-center justify-center gap-40 bg-background px-[40px] py-20 shadow-inner max-xs:flex-col max-xs:gap-20 max-xs:px-[10px]">
       <div className="organization flex items-center">
         <AppImage
           ratio={1}

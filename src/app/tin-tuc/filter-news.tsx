@@ -24,7 +24,7 @@ const FilterNews = () => {
 
   useEffect(() => {
     updateFilterNews(filter);
-  }, [filter]);
+  }, [filter, updateFilterNews]);
 
   return (
     <div className="fixed -right-2 top-1/2">

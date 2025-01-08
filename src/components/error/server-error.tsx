@@ -13,7 +13,7 @@ const ServerError = ({ className, onAction }: ServerErrorProps) => {
   return (
     <div
       className={cn(
-        "mx-auto flex max-w-[300px] flex-col items-center justify-center py-16 text-center",
+        "m-auto flex max-w-[300px] flex-col items-center justify-center py-16 text-center",
         className
       )}
     >
