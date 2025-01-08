@@ -19,7 +19,7 @@ import LightBoxGallery from "@/components/gallery/light-box-gallery";
 const DetailNews = () => {
   const { id } = useParams();
   // console.log("id", id);
-  const { data, isPending, isError } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ["news", id],
     queryFn: async () => {
       return await NewsService.get(id as string);
