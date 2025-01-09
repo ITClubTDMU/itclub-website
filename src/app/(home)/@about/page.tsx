@@ -9,7 +9,7 @@ import SectionHeading from "@/components/section/heading";
 const AboutPage = () => {
   return (
     <div
-      className="section_home mt-section flex flex-col justify-center max-sm:mt-node"
+      className="section_home max-w-[1200px]  mt-section flex flex-col justify-center max-sm:mt-node"
       id="about-us"
     >
       <motion.div
